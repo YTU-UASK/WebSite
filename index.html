@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UASK - Uzay ve Aviyonik Sistemler Kulübü</title>
+    
+    <!-- GSAP CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    
+    <!-- Locomotive Scroll CDN -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.css">
+    <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.js"></script>
+    
+    <!-- Three.js for 3D -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-progress"></div>
+    
+    <div id="smooth-wrapper">
+        <div id="smooth-content">
+            
+            <!-- Hero Section -->
+            <section id="home" class="hero">
+                <div class="hero-bg" id="hero-bg"></div>
+                <div class="hero-stars" id="hero-stars"></div>
+                
+                    <!-- Logo -->
+                    <div class="hero-logo">
+                        <div class="nav-logo">
+                            <img src="media/logo.png" alt="UASK Logo" class="logo-image">
+                        </div>
+                    </div>
+                
+                <!-- Hero Content -->
+                <div class="hero-content">
+                    <div class="hero-title">
+                        <h1 class="title-main">READY TO</h1>
+                        <h1 class="title-sub">TAKE OFF</h1>
+                    </div>
+                <div class="hero-subtitle">
+                    <p>Uzay ve Aviyonik Sistemler Kulübü</p>
+                    <div class="hero-social-links">
+                        <a href="#" class="hero-social-link instagram">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                            </svg>
+                            <span>Instagram</span>
+                        </a>
+                        <a href="#" class="hero-social-link linkedin">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                            </svg>
+                            <span>LinkedIn</span>
+                        </a>
+                    </div>
+                </div>
+                </div>
+                
+                <!-- Right Side Navigation -->
+                <div class="hero-nav">
+                    <div class="nav-dots">
+                        <a href="#home" class="nav-dot active" data-section="home">
+                            <span class="dot"></span>
+                            <span class="label">ANA SAYFA</span>
+                        </a>
+                        <a href="#about" class="nav-dot" data-section="about">
+                            <span class="dot"></span>
+                            <span class="label">UASK NEDİR</span>
+                        </a>
+                        <a href="#projects" class="nav-dot" data-section="projects">
+                            <span class="dot"></span>
+                            <span class="label">PROJELERİMİZ</span>
+                        </a>
+                        <a href="#team" class="nav-dot" data-section="team">
+                            <span class="dot"></span>
+                            <span class="label">BİZ KİMİZ</span>
+                        </a>
+                        <a href="#contact" class="nav-dot" data-section="contact">
+                            <span class="dot"></span>
+                            <span class="label">İLETİŞİM</span>
+                        </a>
+                    </div>
+                    <div class="contact-btn">
+                        <a href="#contact">İLETİŞİM</a>
+                        <div class="arrow">→</div>
+                    </div>
+                </div>
+                
+                <div class="scroll-indicator">
+                    <div class="scroll-line"></div>
+                    <span>SCROLL</span>
+                </div>
+            </section>
+
+        <!-- About Section -->
+        <section id="about" class="about section-transition parallax-container">
+            <div class="about-video-bg parallax-bg">
+                <video autoplay muted loop playsinline>
+                    <source src="media/uzayvideo.mp4" type="video/mp4">
+                </video>
+                <div class="video-overlay"></div>
+            </div>
+            <div class="nebula-bg parallax-element"></div>
+            <div class="stars-container parallax-element" id="about-stars"></div>
+            <div class="section-overlay"></div>
+            <div class="container">
+                    <div class="section-header fade-in">
+                        <h2 class="section-title">UASK NEDİR?</h2>
+                        <div class="title-line"></div>
+                    </div>
+                    <div class="about-content">
+                        <div class="about-text slide-in-left">
+                            <div class="about-intro">
+                                <h3>Uzay ve Aviyonik Sistemler Kulübü</h3>
+                                <p class="about-description">
+                                    UASK, havacılık ve uzay teknolojileri alanında çalışan öğrencilerin bir araya geldiği, 
+                                    projeler geliştirdiği ve bilgi paylaştığı bir topluluktur. Amacımız, geleceğin havacılık 
+                                    ve uzay mühendislerini yetiştirmek ve bu alanda yenilikçi projeler ortaya çıkarmaktır.
+                                </p>
+                                <p class="about-description">
+                                    Kulübümüz, öğrencilerin teorik bilgilerini pratik projelerle birleştirmelerini sağlayarak, 
+                                    sektördeki gelişmeleri takip etmelerine ve yenilikçi çözümler üretmelerine olanak tanır. 
+                                    Türkiye'nin havacılık ve uzay sektöründe öncü rol oynayacak, teknoloji üreten mühendisler 
+                                    yetiştirmeyi hedefliyoruz.
+                                </p>
+                             
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="communities-section fade-in"> 
+                        <h3 class="communities-subtitle">Topluluklarımız</h3>
+                        <div class="community-content">
+                            <div class="community-item slide-in-right">
+                                <div class="community-image">
+                                    <img src="https://oscarliang.com/wp-content/uploads/2023/02/how-to-build-fpv-drone-2025-complete-front.jpg" alt="FPV Drone" class="community-img">
+                                </div>
+                                <div class="community-info">
+                                    <h3>FPV Drone Topluluğu</h3>
+                                    <p class="community-description">
+                                        FPV (First Person View) drone teknolojileri ile ilgilenen öğrencilerimizin bir araya geldiği 
+                                        topluluğumuz. Yüksek hızlı, manevra kabiliyeti yüksek drone'lar tasarlayıp geliştiriyoruz.
+                                    </p>
+                                    <p class="community-description">
+                                        Topluluğumuzda drone yapımından pilotaj tekniklerine, yarış drone'larından profesyonel 
+                                        kullanım alanlarına kadar geniş bir yelpazede çalışmalar yürütüyoruz. 
+                                    </p>
+                            
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="projects section-transition parallax-container">
+            <div class="projects-bg-blur"></div>
+            <div class="stars-container parallax-element" id="projects-stars"></div>
+            <div class="grid-pattern parallax-element"></div>
+            <div class="section-overlay"></div>
+            <div class="container">
+                    <div class="section-header fade-in">
+                        <h2 class="section-title">PROJELERİMİZ</h2>
+                        <div class="title-line"></div>
+                    </div>
+                    <div class="projects-grid">
+                        <div class="project-card stagger-item">
+                            <div class="project-image">
+                                <img src="media/projeler1.jpeg" alt="Roket Projesi" class="project-img">
+                                <div class="project-overlay">
+                                    <div class="project-tech">
+                                        <span>SolidWorks</span>
+                                        <span>OpenRocket</span>
+                                        <span>Arduino</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="project-content">
+                                <div class="project-header">
+                                    <h3>Model Roket Geliştirme</h3>
+                                    <span class="project-status">Aktif</span>
+                                </div>
+                                <p>Yüksek irtifalı model roket tasarımı ve geliştirme projesi. Katı yakıt motorları ve 
+                                gelişmiş navigasyon sistemleri kullanılarak gerçekleştirilen çalışmalar.</p>
+                                <div class="project-details">
+                                    <div class="detail-item">
+                                        <strong>Hedef İrtifa:</strong> 1000m+
+                                    </div>
+                                    <div class="detail-item">
+                                        <strong>Motor Tipi:</strong> Katı Yakıt
+                                    </div>
+                                    <div class="detail-item">
+                                        <strong>Navigasyon:</strong> GPS + IMU
+                                    </div>
+                                </div>
+                                <div class="project-team">
+                                    <span class="team-size">5 Kişi</span>
+                                    <span class="project-duration">6 Ay</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-card stagger-item">
+                            <div class="project-image">
+                                <img src="media/projeler2.jpeg" alt="Drone Projesi" class="project-img">
+                                <div class="project-overlay">
+                                    <div class="project-tech">
+                                        <span>Python</span>
+                                        <span>OpenCV</span>
+                                        <span>ROS</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="project-content">
+                                <div class="project-header">
+                                    <h3>Otonom Drone Sistemi</h3>
+                                    <span class="project-status">Tamamlandı</span>
+                                </div>
+                                <p>Yapay zeka destekli otonom uçuş sistemi geliştirme. GPS navigasyon, 
+                                çarpışma önleme ve otomatik iniş sistemleri entegrasyonu.</p>
+                                <div class="project-details">
+                                    <div class="detail-item">
+                                        <strong>Uçuş Süresi:</strong> 25 dakika
+                                    </div>
+                                    <div class="detail-item">
+                                        <strong>Menzil:</strong> 5km
+                                    </div>
+                                    <div class="detail-item">
+                                        <strong>AI Destekli:</strong> Görüntü işleme
+                                    </div>
+                                </div>
+                                <div class="project-team">
+                                    <span class="team-size">8 Kişi</span>
+                                    <span class="project-duration">8 Ay</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-card stagger-item">
+                            <div class="project-image">
+                                <img src="media/projeler3.jpeg" alt="Uydu Projesi" class="project-img">
+                                <div class="project-overlay">
+                                    <div class="project-tech">
+                                        <span>CubeSat</span>
+                                        <span>C++</span>
+                                        <span>Radio</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="project-content">
+                                <div class="project-header">
+                                    <h3>Küp Uydu Tasarımı</h3>
+                                    <span class="project-status">Planlama</span>
+                                </div>
+                                <p>1U CubeSat standardında küp uydu tasarımı ve geliştirme. 
+                                Telemetri sistemi, güç yönetimi ve haberleşme modülleri entegrasyonu.</p>
+                                <div class="project-details">
+                                    <div class="detail-item">
+                                        <strong>Boyut:</strong> 10x10x10 cm
+                                    </div>
+                                    <div class="detail-item">
+                                        <strong>Ağırlık:</strong> 1.33 kg
+                                    </div>
+                                    <div class="detail-item">
+                                        <strong>Görev:</strong> Dünya gözlemi
+                                    </div>
+                                </div>
+                                <div class="project-team">
+                                    <span class="team-size">12 Kişi</span>
+                                    <span class="project-duration">18 Ay</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-card stagger-item">
+                            <div class="project-image">
+                                <img src="media/projeler4.jpeg" alt="Simülatör Projesi" class="project-img">
+                                <div class="project-overlay">
+                                    <div class="project-tech">
+                                        <span>Python</span>
+                                        <span>Pymavlink</span>
+                                        <span>OpenCV</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="project-content">
+                                <div class="project-header">
+                                    <h3>Otonom Uçuş & Görüntü İşleme Yazılımı</h3>
+                                    <span class="project-status">Geliştirme</span>
+                                </div>
+                                <p>Otonom uçuş yazılımı geliştirme projesi. Pymavlink protokolü kullanılarak python ile geliştirildi. 
+                                    Node'lara dayanan modüler görev tasarımlarıyla istenilen görevler kolaylıkla gerçekleştirilebiliyor.</p>
+                                <div class="project-details">
+                                    <div class="detail-item">
+                                        <strong>Teknoloji:</strong> Pymavlink & OpenCV
+                                    </div>
+                                    <div class="detail-item">
+                                        <strong>Kullanım:</strong> Teknofest 2025
+                                    </div>
+                                </div>
+                                <div class="project-team">
+                                    <span class="team-size">6 Kişi</span>
+                                    <span class="project-duration">12 Ay</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        <!-- Team Section -->
+        <section id="team" class="team section-transition parallax-container">
+            <div class="team-video-bg">
+                <video autoplay muted loop playsinline>
+                    <source src="media/uzayvideo4.mp4" type="video/mp4">
+                </video>
+                <div class="video-overlay"></div>
+            </div>
+            <div class="stars-container parallax-element" id="team-stars"></div>
+            <div class="section-overlay"></div>
+            <div class="container">
+                    <div class="section-header fade-in">
+                        <h2 class="section-title">BİZ KİMİZ</h2>
+                        <div class="title-line"></div>
+                    </div>
+                    <div class="team-content">
+                        <!-- Yönetim Kurulu -->
+                        <div class="board-section fade-in">
+                            <h3 class="board-title">Yönetim Kurulu</h3>
+                            <div class="board-grid management-grid">
+                                <!-- Üst sıra - 3 kişi -->
+                                <div class="member-card-large stagger-item">
+                                    <div class="member-photo-large">
+                                        <img src="https://www.neciparda.com/static/media/ben2.55a838db0b09c918d372.jpg" alt="Necip Arda Kocabaş" class="member-img">
+                                    </div>
+                                    <div class="member-info-large">
+                                        <h4>Necip Arda Kocabaş</h4>
+                                        <p>Kulüp Başkanı</p>
+                                        <span>Havacılık ve Uzay Mühendisliği</span>
+                                        <div class="member-details">
+                                            <p>Uzay teknolojileri ve roket sistemleri konularında uzman. 3 yıllık deneyim ile kulübün liderliğini yapıyor.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="member-card-large stagger-item">
+                                    <div class="member-photo-large">
+                                        <img src="https://www.neciparda.com/static/media/ben2.55a838db0b09c918d372.jpg" alt="Ayşe Yılmaz" class="member-img">
+                                    </div>
+                                    <div class="member-info-large">
+                                        <h4>Ayşe Yılmaz</h4>
+                                        <p>Başkan Yardımcısı</p>
+                                        <span>Havacılık Mühendisliği - 4. Sınıf</span>
+                                        <div class="member-details">
+                                            <p>Roket projelerinde 2 yıl deneyim. Model roket yarışmalarında 3 ödül sahibi.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="member-card-large stagger-item">
+                                    <div class="member-photo-large">
+                                        <img src="https://www.neciparda.com/static/media/ben2.55a838db0b09c918d372.jpg" alt="Mehmet Demir" class="member-img">
+                                    </div>
+                                    <div class="member-info-large">
+                                        <h4>Mehmet Demir</h4>
+                                        <p>Genel Sekreter</p>
+                                        <span>Uzay Mühendisliği - 3. Sınıf</span>
+                                        <div class="member-details">
+                                            <p>Küp uydu projelerinde uzman. NASA Space Apps Challenge'da finalist.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Alt sıra - 2 kişi ortada hizalı -->
+                                <div class="member-card-large stagger-item">
+                                    <div class="member-photo-large">
+                                        <img src="https://www.neciparda.com/static/media/ben2.55a838db0b09c918d372.jpg" alt="Zeynep Kaya" class="member-img">
+                                    </div>
+                                    <div class="member-info-large">
+                                        <h4>Zeynep Kaya</h4>
+                                        <p>Mali İşler Sorumlusu</p>
+                                        <span>Havacılık Mühendisliği - 4. Sınıf</span>
+                                        <div class="member-details">
+                                            <p>Finansal yönetim ve bütçe planlaması konularında uzman. 2 yıllık yönetim deneyimi.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="member-card-large stagger-item">
+                                    <div class="member-photo-large">
+                                        <img src="https://www.neciparda.com/static/media/ben2.55a838db0b09c918d372.jpg" alt="Can Özkan" class="member-img">
+                                    </div>
+                                    <div class="member-info-large">
+                                        <h4>Can Özkan</h4>
+                                        <p>Proje Koordinatörü</p>
+                                        <span>Uzay Mühendisliği - 3. Sınıf</span>
+                                        <div class="member-details">
+                                            <p>Proje yönetimi ve kalite kontrol alanında deneyimli. ISO standartları uzmanı.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Denetim Kurulu -->
+                        <div class="board-section">
+                            <h3 class="board-title">Denetim Kurulu</h3>
+                            <div class="board-grid">
+                                <div class="member-card-large">
+                                    <div class="member-photo-large">
+                                        <img src="https://www.neciparda.com/static/media/ben2.55a838db0b09c918d372.jpg" alt="Elif Şen" class="member-img">
+                                    </div>
+                                    <div class="member-info-large">
+                                        <h4>Elif Şen</h4>
+                                        <p>Denetim Kurulu Başkanı</p>
+                                        <span>Havacılık Mühendisliği - 4. Sınıf</span>
+                                        <div class="member-details">
+                                            <p>Finansal denetim ve muhasebe konularında uzman. 3 yıllık denetim deneyimi.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="member-card-large">
+                                    <div class="member-photo-large">
+                                        <img src="https://www.neciparda.com/static/media/ben2.55a838db0b09c918d372.jpg" alt="Berk Aktaş" class="member-img">
+                                    </div>
+                                    <div class="member-info-large">
+                                        <h4>Berk Aktaş</h4>
+                                        <p>Denetim Kurulu Üyesi</p>
+                                        <span>Uzay Mühendisliği - 3. Sınıf</span>
+                                        <div class="member-details">
+                                            <p>İç denetim ve risk yönetimi konularında deneyimli. Kalite kontrol uzmanı.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="member-card-large">
+                                    <div class="member-photo-large">
+                                        <img src="https://www.neciparda.com/static/media/ben2.55a838db0b09c918d372.jpg" alt="Selin Arslan" class="member-img">
+                                    </div>
+                                    <div class="member-info-large">
+                                        <h4>Selin Arslan</h4>
+                                        <p>Denetim Kurulu Üyesi</p>
+                                        <span>Havacılık Mühendisliği - 2. Sınıf</span>
+                                        <div class="member-details">
+                                            <p>İletişim ve organizasyon konularında aktif. Sosyal medya yönetimi uzmanı.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- İdari Kadro -->
+                        <div class="board-section">
+                            <h3 class="board-title">İdari Kadro</h3>
+                            <div class="board-grid management-grid">
+                                <div class="member-card-large">
+                                    <div class="member-photo-large">
+                                        <img src="https://www.neciparda.com/static/media/ben2.55a838db0b09c918d372.jpg" alt="Berk Aktaş" class="member-img">
+                                    </div>
+                                    <div class="member-info-large">
+                                        <h4>Berk Aktaş</h4>
+                                        <p>İK Sorumlusu</p>
+                                        <span>Uzay Mühendisliği - 4. Sınıf</span>
+                                        <div class="member-details">
+                                            <p>Öğrenci alımları ve eğitim programları koordinatörü. 3 yıllık İK deneyimi.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="member-card-large">
+                                    <div class="member-photo-large">
+                                        <img src="https://www.neciparda.com/static/media/ben2.55a838db0b09c918d372.jpg" alt="Selin Arslan" class="member-img">
+                                    </div>
+                                    <div class="member-info-large">
+                                        <h4>Selin Arslan</h4>
+                                        <p>Eğitim Koordinatörü</p>
+                                        <span>Havacılık Mühendisliği - 3. Sınıf</span>
+                                        <div class="member-details">
+                                            <p>Teknik eğitimler ve workshop organizasyonu. Mentorluk programı yöneticisi.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="member-card-large">
+                                    <div class="member-photo-large">
+                                        <img src="https://www.neciparda.com/static/media/ben2.55a838db0b09c918d372.jpg" alt="Oğuz Yıldız" class="member-img">
+                                    </div>
+                                    <div class="member-info-large">
+                                        <h4>Oğuz Yıldız</h4>
+                                        <p>Etkinlik Sorumlusu</p>
+                                        <span>Uzay Mühendisliği - 2. Sınıf</span>
+                                        <div class="member-details">
+                                            <p>Sosyal etkinlikler ve takım ruhu geliştirme aktiviteleri organizatörü.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="member-card-large">
+                                    <div class="member-photo-large">
+                                        <img src="https://www.neciparda.com/static/media/ben2.55a838db0b09c918d372.jpg" alt="Ahmet Yılmaz" class="member-img">
+                                    </div>
+                                    <div class="member-info-large">
+                                        <h4>Ahmet Yılmaz</h4>
+                                        <p>Teknik Sorumlu</p>
+                                        <span>Havacılık Mühendisliği - 3. Sınıf</span>
+                                        <div class="member-details">
+                                            <p>Teknik ekipman yönetimi ve laboratuvar koordinasyonu. 2 yıllık teknik deneyim.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="member-card-large">
+                                    <div class="member-photo-large">
+                                        <img src="https://www.neciparda.com/static/media/ben2.55a838db0b09c918d372.jpg" alt="Fatma Demir" class="member-img">
+                                    </div>
+                                    <div class="member-info-large">
+                                        <h4>Fatma Demir</h4>
+                                        <p>İletişim Sorumlusu</p>
+                                        <span>Uzay Mühendisliği - 2. Sınıf</span>
+                                        <div class="member-details">
+                                            <p>Dış iletişim ve medya ilişkileri. Sosyal medya ve web yönetimi uzmanı.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="contact section-transition parallax-container">
+            <div class="stars-container parallax-element" id="contact-stars"></div>
+            <div class="section-overlay"></div>
+            <div class="container">
+                    <div class="section-header fade-in">
+                        <h2 class="section-title">İLETİŞİM</h2>
+                        <div class="title-line"></div>
+                    </div>
+                    <div class="contact-content">
+                        <div class="contact-info slide-in-left">
+                            <h3>Bize Ulaşın</h3>
+                            
+                            <div class="contact-details">
+                                <a href="#" class="contact-link stagger-item">
+                                    <div class="contact-icon">📍</div>
+                                    <div class="contact-info">
+                                        <span class="contact-name">Adres</span>
+                                        <span class="contact-detail">Üniversite Kampüsü<br>Havacılık ve Uzay Fakültesi<br>Ankara, Türkiye</span>
+                                    </div>
+                                </a>
+                                <a href="mailto:yildizuask@gmail.com" class="contact-link stagger-item">
+                                    <div class="contact-icon">📧</div>
+                                    <div class="contact-info">
+                                        <span class="contact-name">E-posta</span>
+                                        <span class="contact-detail">yildizuask@gmail.com</span>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <div class="social-links slide-in-right">
+                            <h4>Sosyal Medya</h4>
+                            <div class="social-grid">
+                                <a href="#" class="social-link stagger-item">
+                                    <div class="social-icon instagram">
+                                        <svg viewBox="0 0 24 24" fill="currentColor">
+                                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                                        </svg>
+                                    </div>
+                                    <div class="social-info">
+                                        <span class="social-name">Instagram</span>
+                                        <span class="social-handle">@uask_official</span>
+                                    </div>
+                                </a>
+                                <a href="#" class="social-link stagger-item">
+                                    <div class="social-icon linkedin">
+                                        <svg viewBox="0 0 24 24" fill="currentColor">
+                                            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                                        </svg>
+                                    </div>
+                                    <div class="social-info">
+                                        <span class="social-name">LinkedIn</span>
+                                        <span class="social-handle">UASK - Uzay ve Aviyonik</span>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
