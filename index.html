@@ -452,7 +452,7 @@
                         <div class="board-section">
                             <h3 class="board-title">İdari Kadro</h3>
                             <div class="board-grid management-grid">
-                                <div class="member-card-large">
+                                <div class="member-card-large clickable-member" data-member="berk-aktas">
                                     <div class="member-photo-large">
                                         <img src="https://www.neciparda.com/static/media/ben2.55a838db0b09c918d372.jpg" alt="Berk Aktaş" class="member-img">
                                     </div>
@@ -463,9 +463,10 @@
                                         <div class="member-details">
                                             <p>Öğrenci alımları ve eğitim programları koordinatörü. 3 yıllık İK deneyimi.</p>
                                         </div>
+                                        <div class="click-hint">Detaylar için tıklayın</div>
                                     </div>
                                 </div>
-                                <div class="member-card-large">
+                                <div class="member-card-large clickable-member" data-member="selin-arslan">
                                     <div class="member-photo-large">
                                         <img src="https://www.neciparda.com/static/media/ben2.55a838db0b09c918d372.jpg" alt="Selin Arslan" class="member-img">
                                     </div>
@@ -476,9 +477,10 @@
                                         <div class="member-details">
                                             <p>Teknik eğitimler ve workshop organizasyonu. Mentorluk programı yöneticisi.</p>
                                         </div>
+                                        <div class="click-hint">Detaylar için tıklayın</div>
                                     </div>
                                 </div>
-                                <div class="member-card-large">
+                                <div class="member-card-large clickable-member" data-member="oguz-yildiz">
                                     <div class="member-photo-large">
                                         <img src="https://www.neciparda.com/static/media/ben2.55a838db0b09c918d372.jpg" alt="Oğuz Yıldız" class="member-img">
                                     </div>
@@ -489,9 +491,10 @@
                                         <div class="member-details">
                                             <p>Sosyal etkinlikler ve takım ruhu geliştirme aktiviteleri organizatörü.</p>
                                         </div>
+                                        <div class="click-hint">Detaylar için tıklayın</div>
                                     </div>
                                 </div>
-                                <div class="member-card-large">
+                                <div class="member-card-large clickable-member" data-member="ahmet-yilmaz">
                                     <div class="member-photo-large">
                                         <img src="https://www.neciparda.com/static/media/ben2.55a838db0b09c918d372.jpg" alt="Ahmet Yılmaz" class="member-img">
                                     </div>
@@ -502,9 +505,10 @@
                                         <div class="member-details">
                                             <p>Teknik ekipman yönetimi ve laboratuvar koordinasyonu. 2 yıllık teknik deneyim.</p>
                                         </div>
+                                        <div class="click-hint">Detaylar için tıklayın</div>
                                     </div>
                                 </div>
-                                <div class="member-card-large">
+                                <div class="member-card-large clickable-member" data-member="fatma-demir">
                                     <div class="member-photo-large">
                                         <img src="https://www.neciparda.com/static/media/ben2.55a838db0b09c918d372.jpg" alt="Fatma Demir" class="member-img">
                                     </div>
@@ -515,6 +519,7 @@
                                         <div class="member-details">
                                             <p>Dış iletişim ve medya ilişkileri. Sosyal medya ve web yönetimi uzmanı.</p>
                                         </div>
+                                        <div class="click-hint">Detaylar için tıklayın</div>
                                     </div>
                                 </div>
                             </div>
@@ -586,6 +591,51 @@
                 </div>
             </section>
 
+        </div>
+    </div>
+
+    <!-- Member Detail Modal -->
+    <div id="memberModal" class="member-modal">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <button class="modal-close">&times;</button>
+            <div class="modal-body">
+                <div class="modal-photo">
+                    <img id="modalPhoto" src="" alt="" class="modal-img">
+                </div>
+                <div class="modal-info">
+                    <h2 id="modalName"></h2>
+                    <h3 id="modalPosition"></h3>
+                    <span id="modalDepartment"></span>
+                    <div class="modal-details">
+                        <div class="detail-section">
+                            <h4>Hakkında</h4>
+                            <p id="modalAbout"></p>
+                        </div>
+                        <div class="detail-section">
+                            <h4>Deneyim</h4>
+                            <p id="modalExperience"></p>
+                        </div>
+                        <div class="detail-section">
+                            <h4>Sorumluluklar</h4>
+                            <ul id="modalResponsibilities"></ul>
+                        </div>
+                        <div class="detail-section">
+                            <h4>İletişim</h4>
+                            <div class="contact-info">
+                                <div class="contact-item">
+                                    <span class="contact-label">E-posta:</span>
+                                    <span id="modalEmail"></span>
+                                </div>
+                                <div class="contact-item">
+                                    <span class="contact-label">Telefon:</span>
+                                    <span id="modalPhone"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
