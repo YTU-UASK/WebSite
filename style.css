@@ -1012,6 +1012,8 @@ section {
     margin: 0 auto;
     position: relative;
     z-index: 20;
+    justify-items: center;
+    align-items: start;
 }
 
 /* Board sections z-index */
@@ -1029,19 +1031,17 @@ section {
     align-items: start;
 }
 
-/* Alt sıra için özel hizalama - 2 kişi yan yana sola dayalı */
+/* Alt sıra için özel hizalama - 2 kişi yan yana ortalanmış */
 .management-grid .member-card-large:nth-child(4) {
     grid-column: 1;
     grid-row: 2;
-    justify-self: start;
-    margin-right: 15px;
+    justify-self: center;
 }
 
 .management-grid .member-card-large:nth-child(5) {
     grid-column: 2;
     grid-row: 2;
-    justify-self: start;
-    margin-left: 15px;
+    justify-self: center;
 }
 
 /* Responsive management grid */
@@ -1054,14 +1054,12 @@ section {
         grid-column: 1;
         grid-row: 2;
         justify-self: center;
-        margin-right: 0;
     }
     
     .management-grid .member-card-large:nth-child(5) {
         grid-column: 2;
         grid-row: 2;
         justify-self: center;
-        margin-left: 0;
     }
 }
 
@@ -1074,14 +1072,12 @@ section {
         grid-column: 1;
         grid-row: 4;
         justify-self: center;
-        margin-right: 0;
     }
     
     .management-grid .member-card-large:nth-child(5) {
         grid-column: 1;
         grid-row: 5;
         justify-self: center;
-        margin-left: 0;
     }
 }
 
@@ -1156,9 +1152,12 @@ section {
     overflow: hidden;
     padding: 20px;
     text-align: center;
-    height: auto;
-    min-height: 300px;
+    width: 280px;
+    height: 300px;
     z-index: 20;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
 }
 
 .member-card-large::before {
@@ -1189,7 +1188,7 @@ section {
     height: 120px;
     border-radius: 50%;
     overflow: hidden;
-    margin: 0 auto 20px;
+    margin: 0 auto 15px;
     border: 3px solid rgba(0, 212, 255, 0.3);
     transition: all 0.15s ease;
     position: relative;
@@ -1229,7 +1228,7 @@ section {
 
 .member-info-large h4 {
     font-size: 1.2rem;
-    margin-bottom: 8px;
+    margin-bottom: 5px;
     color: #ffffff;
     font-weight: 700;
 }
@@ -1237,7 +1236,7 @@ section {
 .member-info-large p {
     color: #00d4ff;
     font-weight: 600;
-    margin-bottom: 8px;
+    margin-bottom: 5px;
     font-size: 1rem;
 }
 
@@ -1245,7 +1244,7 @@ section {
     color: #999999;
     font-size: 0.9rem;
     display: block;
-    margin-bottom: 15px;
+    margin-bottom: 0;
 }
 
 .member-info-large .member-details {
@@ -1261,13 +1260,7 @@ section {
 }
 
 /* Contact Details Styles */
-.contact-details {
-    margin-top: 15px;
-    padding: 15px;
-    background: rgba(0, 212, 255, 0.05);
-    border-radius: 10px;
-    border: 1px solid rgba(0, 212, 255, 0.2);
-}
+
 
 .contact-item {
     display: flex;
@@ -1301,6 +1294,15 @@ section {
     .board-title {
         font-size: 1.8rem;
     }
+    
+    .member-card-large {
+        width: 260px;
+        height: 330px;
+    }
+    
+    .member-photo-large {
+        margin: 0 auto 8px;
+    }
 }
 
 @media (max-width: 700px) {
@@ -1318,9 +1320,15 @@ section {
         margin-bottom: 60px;
     }
     
+    .member-card-large {
+        width: 240px;
+        height: 310px;
+    }
+    
     .member-photo-large {
-        width: 120px;
-        height: 120px;
+        width: 100px;
+        height: 100px;
+        margin: 0 auto 8px;
     }
 }
 
@@ -1336,7 +1344,7 @@ section {
 .contact-content {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 60px;
+    gap: 30px;
     max-width: 1000px;
     margin: 0 auto;
 }
@@ -1356,8 +1364,8 @@ section {
 }
 
 .contact-details {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
     gap: 20px;
 }
 
@@ -1375,6 +1383,8 @@ section {
     backdrop-filter: blur(10px);
     position: relative;
     overflow: hidden;
+    height: 100px;
+    width: 100%;
 }
 
 .contact-link::before {
@@ -1432,7 +1442,7 @@ section {
 .contact-info {
     display: flex;
     flex-direction: column;
-    gap: 5px;
+
 }
 
 .contact-name {
@@ -1442,7 +1452,7 @@ section {
 }
 
 .contact-detail {
-    font-size: 0.8rem;
+    font-size: 0.75rem;
     color: #999999;
     line-height: 1.4;
 }
@@ -1461,11 +1471,11 @@ section {
     margin: 0;
 }
 
-.social-links h4 {
+.social-links h3 {
     color: #ffffff;
-    font-size: 1.3rem;
-    margin-bottom: 30px;
-    font-weight: 600;
+    font-size: 2rem;
+    margin-bottom: 20px;
+    font-weight: 700;
 }
 
 .social-grid {
@@ -1490,6 +1500,8 @@ section {
     backdrop-filter: blur(10px);
     position: relative;
     overflow: hidden;
+    height: 100px;
+    width: 100%;
 }
 
 .social-link::before {
