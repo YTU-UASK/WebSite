@@ -1025,21 +1025,42 @@ section {
 /* Management grid - Yönetim Kurulu özel düzeni */
 .management-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: 1fr 1fr 1fr;
     gap: 30px;
     justify-items: center;
     align-items: start;
 }
 
-/* Alt sıra için özel hizalama - 2 kişi yan yana ortalanmış */
-.management-grid .member-card-large:nth-child(4) {
+/* Üst sıra için özel hizalama - 2 kişi tam ortada (1.5 ve 2.5 pozisyonları) */
+.management-grid .member-card-large:nth-child(1) {
+    grid-column: 1 / 2;
+    grid-row: 1;
+    justify-self: end;
+    margin-right: 15px;
+}
+
+.management-grid .member-card-large:nth-child(2) {
+    grid-column: 2 / 3;
+    grid-row: 1;
+    justify-self: start;
+    margin-left: 15px;
+}
+
+/* Alt sıra için özel hizalama - 3 kişi yan yana */
+.management-grid .member-card-large:nth-child(3) {
     grid-column: 1;
     grid-row: 2;
     justify-self: center;
 }
 
-.management-grid .member-card-large:nth-child(5) {
+.management-grid .member-card-large:nth-child(4) {
     grid-column: 2;
+    grid-row: 2;
+    justify-self: center;
+}
+
+.management-grid .member-card-large:nth-child(5) {
+    grid-column: 3;
     grid-row: 2;
     justify-self: center;
 }
@@ -1047,18 +1068,40 @@ section {
 /* Responsive management grid */
 @media (max-width: 1200px) {
     .management-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: 1fr 1fr;
     }
     
-    .management-grid .member-card-large:nth-child(4) {
+    /* Üst sıra - 2 kişi ortalanmış */
+    .management-grid .member-card-large:nth-child(1) {
+        grid-column: 1;
+        grid-row: 1;
+        justify-self: center;
+        margin-right: 0;
+    }
+    
+    .management-grid .member-card-large:nth-child(2) {
+        grid-column: 2;
+        grid-row: 1;
+        justify-self: center;
+        margin-left: 0;
+    }
+    
+    /* Alt sıra - 3 kişi */
+    .management-grid .member-card-large:nth-child(3) {
         grid-column: 1;
         grid-row: 2;
         justify-self: center;
     }
     
-    .management-grid .member-card-large:nth-child(5) {
+    .management-grid .member-card-large:nth-child(4) {
         grid-column: 2;
         grid-row: 2;
+        justify-self: center;
+    }
+    
+    .management-grid .member-card-large:nth-child(5) {
+        grid-column: 1;
+        grid-row: 3;
         justify-self: center;
     }
 }
@@ -1066,6 +1109,27 @@ section {
 @media (max-width: 768px) {
     .management-grid {
         grid-template-columns: 1fr;
+    }
+    
+    /* Mobilde tüm kartlar tek sütunda */
+    .management-grid .member-card-large:nth-child(1) {
+        grid-column: 1;
+        grid-row: 1;
+        justify-self: center;
+        margin-right: 0;
+    }
+    
+    .management-grid .member-card-large:nth-child(2) {
+        grid-column: 1;
+        grid-row: 2;
+        justify-self: center;
+        margin-left: 0;
+    }
+    
+    .management-grid .member-card-large:nth-child(3) {
+        grid-column: 1;
+        grid-row: 3;
+        justify-self: center;
     }
     
     .management-grid .member-card-large:nth-child(4) {
