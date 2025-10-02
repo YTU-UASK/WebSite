@@ -319,7 +319,8 @@ function initScrollAnimations() {
     // Takım üyeleri için staggered animasyon
     const memberCards = document.querySelectorAll('.member-card-large');
     memberCards.forEach((card, index) => {
-        card.style.transitionDelay = (index * 0.1) + 's';
+        // Sadece ilk görünüm animasyonu için delay
+        card.style.setProperty('--initial-delay', (index * 0.1) + 's');
         observer.observe(card);
     });
     
