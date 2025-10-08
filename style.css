@@ -477,6 +477,68 @@ section {
     top: 0;
     left: 0;
     filter: blur(3px);
+    /* Video optimizasyonu */
+    will-change: transform;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+}
+
+/* Mobilde video performans optimizasyonu */
+@media (max-width: 768px) {
+    .about-video-bg video {
+        /* Mobilde daha az blur */
+        filter: blur(1px);
+        /* GPU acceleration */
+        transform: translate3d(0, 0, 0);
+        /* Video quality düşür */
+        image-rendering: optimizeSpeed;
+    }
+    
+    /* Çok küçük ekranlarda video'yu tamamen kapat */
+    @media (max-width: 480px) {
+        .about-video-bg {
+            display: none;
+        }
+        
+        .about {
+            background: radial-gradient(circle at 30% 20%, rgba(0, 212, 255, 0.15) 0%, transparent 50%),
+                        radial-gradient(circle at 70% 80%, rgba(0, 153, 204, 0.15) 0%, transparent 50%);
+        }
+    }
+    
+    /* Mobilde animasyonları optimize et */
+    .hero-star {
+        animation-duration: 6s;
+        animation-timing-function: ease-in-out;
+    }
+    
+    .star {
+        animation-duration: 3s;
+        animation-timing-function: ease-in-out;
+    }
+    
+    /* Ağır animasyonları mobilde kapat */
+    .parallax-element {
+        transform: none !important;
+    }
+    
+    .section-transition::before {
+        opacity: 0;
+    }
+    
+    /* Hover efektlerini mobilde kapat */
+    .member-card-large:hover {
+        transform: none;
+    }
+    
+    .project-card:hover {
+        transform: none;
+    }
+    
+    .community-item:hover {
+        transform: none;
+    }
 }
 
 .video-overlay {
@@ -1275,6 +1337,35 @@ section {
     top: 0;
     left: 0;
     filter: blur(5px);
+    /* Video optimizasyonu */
+    will-change: transform;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+}
+
+/* Mobilde team video optimizasyonu */
+@media (max-width: 768px) {
+    .team-video-bg video {
+        /* Mobilde daha az blur */
+        filter: blur(2px);
+        /* GPU acceleration */
+        transform: translate3d(0, 0, 0);
+        /* Video quality düşür */
+        image-rendering: optimizeSpeed;
+    }
+    
+    /* Çok küçük ekranlarda video'yu tamamen kapat */
+    @media (max-width: 480px) {
+        .team-video-bg {
+            display: none;
+        }
+        
+        .team {
+            background: radial-gradient(circle at 30% 20%, rgba(0, 212, 255, 0.15) 0%, transparent 50%),
+                        radial-gradient(circle at 70% 80%, rgba(0, 153, 204, 0.15) 0%, transparent 50%);
+        }
+    }
 }
 
 .team-video-bg .video-overlay {
