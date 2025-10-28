@@ -805,11 +805,12 @@ section {
     overflow: hidden;
     border-radius: 12px;
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    height: 300px;
 }
 
 .community-img {
     width: 100%;
-    height: 200px;
+    height: 100%;
     object-fit: cover;
     transition: transform 0.3s ease;
 }
@@ -896,8 +897,12 @@ section {
         padding: 20px;
     }
     
-    .community-img {
+    .community-image {
         height: 250px;
+    }
+    
+    .community-img {
+        height: 100%;
     }
     
     .communities-subtitle {
