@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UAZ'25 - Başvuru Formu</title>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Supabase -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="media/logo.png">
+    <link rel="shortcut icon" type="image/x-icon" href="media/logo.png">
+    <link rel="apple-touch-icon" href="media/logo.png">
+</head>
+
+<body>
+    <div class="registration-page">
+        <!-- Hero Background -->
+        <div class="hero-bg"></div>
+        <div class="hero-stars" id="hero-stars"></div>
+
+        <!-- Logo -->
+        <div class="form-logo">
+            <a href="index.html">
+                <img src="media/logo.png" alt="UASK Logo">
+            </a>
+        </div>
+
+        <!-- Back Button -->
+        <a href="index.html" class="back-btn">
+            <i class="fas fa-arrow-left"></i>
+          
+        </a>
+
+        <!-- Form Container -->
+        <div class="form-container">
+            <h1 class="form-title">UAZ'25</h1>
+            <p class="form-subtitle">Uzay ve Havacılık Zirvesi Başvuru Formu</p>
+
+            <!-- Progress Steps -->
+            <div class="progress-steps">
+                <div class="step active" data-step="1">
+                    <div class="step-number">1</div>
+                    <div class="step-label">Kişisel Bilgiler</div>
+                </div>
+                <div class="step" data-step="2">
+                    <div class="step-number">2</div>
+                    <div class="step-label">Eğitim Bilgileri</div>
+                </div>
+                <div class="step" data-step="3">
+                    <div class="step-number">3</div>
+                    <div class="step-label">Katılım Bilgileri</div>
+                </div>
+                <div class="step" data-step="4">
+                    <div class="step-number">4</div>
+                    <div class="step-label">Onaylar</div>
+                </div>
+            </div>
+
+            <form class="registration-form" id="registrationForm" novalidate>
+                <!-- KİŞİSEL BİLGİLER -->
+                <div class="form-section form-step active" data-step="1">
+                    <h2 class="section-title">
+                        <i class="fas fa-user"></i>
+                        Kişisel Bilgiler
+                    </h2>
+
+                    <div class="form-group">
+                        <label for="firstname">İsim <span class="required">*</span></label>
+                        <input type="text" id="firstname" name="firstname" placeholder="İsminiz" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="lastname">Soyisim <span class="required">*</span></label>
+                        <input type="text" id="lastname" name="lastname" placeholder="Soyisminiz" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">Telefon numarası <span class="required">*</span></label>
+                        <small class="field-description">Lütfen 05xx ile başlayan cep numaranızı giriniz.</small>
+                        <input type="tel" id="phone" name="phone" placeholder="05XX XXX XX XX" pattern="05[0-9]{9}" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">E-posta adresi <span class="required">*</span></label>
+                        <small class="field-description">Bilgilendirme e-postaları bu adrese gönderilecektir.</small>
+                        <input type="email" id="email" name="email" placeholder="ornek@mail.com" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="gender">Cinsiyet</label>
+                        <select id="gender" name="gender">
+                            <option value="" disabled selected>Seçiniz</option>
+                            <option value="kadin">Kadın</option>
+                            <option value="erkek">Erkek</option>
+                            <option value="belirtmek-istemiyorum">Belirtmek istemiyorum</option>
+                        </select>
+                    </div>
+
+                    <!-- Navigation Buttons -->
+                    <div class="form-navigation">
+                        <button type="button" class="nav-btn next-btn">
+                            İleri
+                            <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- EĞİTİM BİLGİLERİ -->
+                <div class="form-section form-step" data-step="2">
+                    <h2 class="section-title">
+                        <i class="fas fa-graduation-cap"></i>
+                        Eğitim Bilgileri
+                    </h2>
+
+                    <div class="form-group">
+                        <label for="school">Okul</label>
+                        <select id="school" name="school">
+                            <option value="" disabled selected>Seçiniz</option>
+                            <option value="yildiz-teknik">Yıldız Teknik Üniversitesi</option>
+                            <option value="istanbul-teknik">İstanbul Teknik Üniversitesi</option>
+                            <option value="bogazici">Boğaziçi Üniversitesi</option>
+                            <option value="diger">Diğer</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="department">Bölüm</label>
+                        <small class="field-description">Eğer listede yoksa 'Diğer' seçeneğini seçiniz.</small>
+                        <select id="department" name="department">
+                            <option value="" disabled selected>Seçiniz</option>
+                            <option value="elektrik">Elektrik Mühendisliği</option>
+                            <option value="elektronik-haberlesme">Elektronik ve Haberleşme Mühendisliği</option>
+                            <option value="makine">Makine Mühendisliği</option>
+                            <option value="bilgisayar">Bilgisayar Mühendisliği</option>
+                            <option value="kontrol-otomasyon">Kontrol ve Otomasyon Mühendisliği</option>
+                            <option value="diger">Diğer</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="grade">Sınıf</label>
+                        <select id="grade" name="grade">
+                            <option value="" disabled selected>Seçiniz</option>
+                            <option value="1">1. sınıf</option>
+                            <option value="2">2. sınıf</option>
+                            <option value="3">3. sınıf</option>
+                            <option value="4">4. sınıf</option>
+                            <option value="mezun">Mezun</option>
+                        </select>
+                    </div>
+
+                    <!-- Navigation Buttons -->
+                    <div class="form-navigation">
+                        <button type="button" class="nav-btn prev-btn">
+                            <i class="fas fa-arrow-left"></i>
+                            Geri
+                        </button>
+                        <button type="button" class="nav-btn next-btn">
+                            İleri
+                            <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- KATILIM BİLGİLERİ -->
+                <div class="form-section form-step" data-step="3">
+                    <h2 class="section-title">
+                        <i class="fas fa-rocket"></i>
+                        Katılım Bilgileri
+                    </h2>
+
+                    <div class="form-group">
+                        <label for="participation-type">Katılım türü</label>
+                        <select id="participation-type" name="participation-type">
+                            <option value="" disabled selected>Seçiniz</option>
+                            <option value="ytu-ogrenci">YTÜ öğrencisiyim</option>
+                            <option value="diger-universite">Diğer üniversite öğrencisiyim</option>
+                            <option value="lise-ogrenci">Lise öğrencisiyim</option>
+                            <option value="mezun-profesyonel">Mezun / Profesyonel katılımcıyım</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="attendance-day">Hangi günde katılmayı planlıyorsunuz?</label>
+                        <select id="attendance-day" name="attendance-day">
+                            <option value="" disabled selected>Seçiniz</option>
+                            <option value="1-aralik">1 Aralık (Uzay Günü)</option>
+                            <option value="2-aralik">2 Aralık (Havacılık Günü)</option>
+                            <option value="her-iki-gun">Her iki gün</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="motivation">Bu zirveye katılmak isteme nedeninizi açıklayınız. <span class="required">*</span></label>
+                        <textarea id="motivation" name="motivation" rows="5" placeholder="Nedeninizi yazınız..." required></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="previous-event">Daha önce herhangi bir etkinliğimize katıldınız mı?</label>
+                        <select id="previous-event" name="previous-event">
+                            <option value="" disabled selected>Seçiniz</option>
+                            <option value="katildim">Katıldım</option>
+                            <option value="katilmadim">Katılmadım</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="previous-project">Daha önce UASK bünyesinde veya başka bir ekip ile proje çalışmalarında bulundunuz mu?</label>
+                        <select id="previous-project" name="previous-project">
+                            <option value="" disabled selected>Seçiniz</option>
+                            <option value="bulundum">Bulundum</option>
+                            <option value="bulunmadim">Bulunmadım</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group conditional-field" id="project-explanation-group" style="display: none;">
+                        <label for="project-explanation">Açıklayınız.</label>
+                        <textarea id="project-explanation" name="project-explanation" rows="4" placeholder="Proje deneyiminizi açıklayınız..."></textarea>
+                    </div>
+
+                    <!-- Navigation Buttons -->
+                    <div class="form-navigation">
+                        <button type="button" class="nav-btn prev-btn">
+                            <i class="fas fa-arrow-left"></i>
+                            Geri
+                        </button>
+                        <button type="button" class="nav-btn next-btn">
+                            İleri
+                            <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- ONAYLAR -->
+                <div class="form-section form-step" data-step="4">
+                    <h2 class="section-title">
+                        <i class="fas fa-check-circle"></i>
+                        Onaylar
+                    </h2>
+
+                    <div class="form-group checkbox-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="email-consent" name="email-consent" required>
+                            <span>Zirveyle ilgili bilgilendirme, duyuru ve etkinlik e-postalarını almayı kabul ediyorum. <span class="required">*</span></span>
+                        </label>
+                    </div>
+
+                    <div class="form-group checkbox-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="photo-consent" name="photo-consent" required>
+                            <span>Fotoğraf / video çekimlerinde yer almayı onaylıyorum. <span class="required">*</span></span>
+                        </label>
+                    </div>
+
+                    <!-- Navigation Buttons -->
+                    <div class="form-navigation">
+                        <button type="button" class="nav-btn prev-btn">
+                            <i class="fas fa-arrow-left"></i>
+                            Geri
+                        </button>
+                        <button type="submit" class="submit-btn">
+                            <i class="fas fa-paper-plane"></i>
+                            <span>Başvuruyu Gönder</span>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // ==========================================
+        // SUPABASE CONFIGURATION
+        // ==========================================
+        const SUPABASE_URL = 'https://ksvkdvamipuavekhzexp.supabase.co';
+        const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImtzdmtkdmFtaXB1YXZla2h6ZXhwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjE2NTI5NDMsImV4cCI6MjA3NzIyODk0M30.txooS99Vws73AUv3TeKAtFp3BGKeh1yyB4qMxQh-MEY';
+        
+        // Supabase client'ı başlat
+        const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+        /* 
+        ==========================================
+        SUPABASE TABLO YAPISI (SQL)
+        ==========================================
+        Supabase Dashboard > SQL Editor'da aşağıdaki SQL'i çalıştırın:
+
+        CREATE TABLE uaz25_applications (
+            id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
+            
+            -- Kişisel Bilgiler
+            firstname TEXT NOT NULL,
+            lastname TEXT NOT NULL,
+            phone TEXT NOT NULL,
+            email TEXT NOT NULL,
+            gender TEXT,
+            
+            -- Eğitim Bilgileri
+            school TEXT,
+            department TEXT,
+            grade TEXT,
+            
+            -- Katılım Bilgileri
+            participation_type TEXT,
+            attendance_day TEXT,
+            motivation TEXT NOT NULL,
+            previous_event TEXT,
+            previous_project TEXT,
+            project_explanation TEXT,
+            
+            -- Onaylar
+            email_consent BOOLEAN NOT NULL DEFAULT false,
+            photo_consent BOOLEAN NOT NULL DEFAULT false,
+            
+            -- Metadata
+            created_at TIMESTAMPTZ DEFAULT NOW()
+        );
+
+        -- Row Level Security (RLS) kuralları
+        ALTER TABLE uaz25_applications ENABLE ROW LEVEL SECURITY;
+
+        -- Herkes insert yapabilir (form gönderimi için)
+        CREATE POLICY "Enable insert for all users" ON uaz25_applications
+            FOR INSERT WITH CHECK (true);
+
+        -- Sadece authenticated kullanıcılar okuyabilir (admin paneli için)
+        CREATE POLICY "Enable read for authenticated users" ON uaz25_applications
+            FOR SELECT USING (auth.role() = 'authenticated');
+        */
+
+        // Create stars
+        function createStars() {
+            const starsContainer = document.getElementById('hero-stars');
+            const starCount = 100;
+
+            for (let i = 0; i < starCount; i++) {
+                const star = document.createElement('div');
+                star.className = 'hero-star';
+
+                // Random position
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+
+                // Random size (1-3px)
+                const size = Math.random() * 2 + 1;
+                star.style.width = size + 'px';
+                star.style.height = size + 'px';
+
+                // Random animation delay
+                star.style.animationDelay = Math.random() * 4 + 's';
+
+                starsContainer.appendChild(star);
+            }
+        }
+
+        // Multi-step form logic
+        let currentStep = 1;
+        const totalSteps = 4;
+
+        // Get all steps
+        const formSteps = document.querySelectorAll('.form-step');
+        const progressSteps = document.querySelectorAll('.progress-steps .step');
+        const nextBtns = document.querySelectorAll('.next-btn');
+        const prevBtns = document.querySelectorAll('.prev-btn');
+
+        // Show specific step
+        function showStep(stepNumber) {
+            formSteps.forEach((step, index) => {
+                if (index + 1 === stepNumber) {
+                    step.classList.add('active');
+                } else {
+                    step.classList.remove('active');
+                }
+            });
+
+            // Update progress indicator
+            progressSteps.forEach((step, index) => {
+                if (index + 1 <= stepNumber) {
+                    step.classList.add('active');
+                    if (index + 1 < stepNumber) {
+                        step.classList.add('completed');
+                    } else {
+                        step.classList.remove('completed');
+                    }
+                } else {
+                    step.classList.remove('active');
+                    step.classList.remove('completed');
+                }
+            });
+
+            currentStep = stepNumber;
+        }
+
+        // Validate current step
+        function validateStep(stepNumber) {
+            const currentFormStep = document.querySelector(`.form-step[data-step="${stepNumber}"]`);
+            const requiredFields = currentFormStep.querySelectorAll('[required]');
+            
+            let isValid = true;
+            requiredFields.forEach(field => {
+                if (!field.value || (field.type === 'checkbox' && !field.checked)) {
+                    isValid = false;
+                    field.classList.add('error');
+                } else {
+                    field.classList.remove('error');
+                }
+            });
+            
+            return isValid;
+        }
+
+        // Next button click
+        nextBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                if (validateStep(currentStep)) {
+                    if (currentStep < totalSteps) {
+                        showStep(currentStep + 1);
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                    }
+                } else {
+                    alert('Lütfen tüm zorunlu alanları doldurun.');
+                }
+            });
+        });
+
+        // Previous button click
+        prevBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                if (currentStep > 1) {
+                    showStep(currentStep - 1);
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                }
+            });
+        });
+
+        // Conditional field visibility
+        document.getElementById('previous-project').addEventListener('change', function() {
+            const explanationGroup = document.getElementById('project-explanation-group');
+            const explanationField = document.getElementById('project-explanation');
+            
+            if (this.value === 'bulundum') {
+                explanationGroup.style.display = 'block';
+                explanationField.required = true;
+            } else {
+                explanationGroup.style.display = 'none';
+                explanationField.required = false;
+                explanationField.value = '';
+            }
+        });
+
+        // Form submission handler
+        document.getElementById('registrationForm').addEventListener('submit', async function (e) {
+            e.preventDefault();
+
+            // Tüm zorunlu alanları kontrol et
+            const requiredFields = {
+                firstname: document.getElementById('firstname').value,
+                lastname: document.getElementById('lastname').value,
+                phone: document.getElementById('phone').value,
+                email: document.getElementById('email').value,
+                motivation: document.getElementById('motivation').value,
+                emailConsent: document.getElementById('email-consent').checked,
+                photoConsent: document.getElementById('photo-consent').checked
+            };
+
+            // Validation kontrolü
+            if (!requiredFields.firstname || !requiredFields.lastname) {
+                alert('Lütfen isim ve soyisim alanlarını doldurun.');
+                showStep(1);
+                return;
+            }
+
+            if (!requiredFields.phone || !requiredFields.phone.match(/^05[0-9]{9}$/)) {
+                alert('Lütfen geçerli bir telefon numarası girin (05XX XXX XX XX).');
+                showStep(1);
+                return;
+            }
+
+            if (!requiredFields.email || !requiredFields.email.includes('@')) {
+                alert('Lütfen geçerli bir e-posta adresi girin.');
+                showStep(1);
+                return;
+            }
+
+            if (!requiredFields.motivation) {
+                alert('Lütfen katılım nedeninizi yazın.');
+                showStep(3);
+                return;
+            }
+
+            if (!requiredFields.emailConsent || !requiredFields.photoConsent) {
+                alert('Lütfen tüm onayları işaretleyin.');
+                showStep(4);
+                return;
+            }
+
+            // Submit button'ı devre dışı bırak
+            const submitBtn = this.querySelector('.submit-btn');
+            const originalText = submitBtn.innerHTML;
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i><span>Gönderiliyor...</span>';
+
+            // Collect all form data
+            const formData = {
+                // Kişisel Bilgiler
+                firstname: document.getElementById('firstname').value,
+                lastname: document.getElementById('lastname').value,
+                phone: document.getElementById('phone').value,
+                email: document.getElementById('email').value,
+                gender: document.getElementById('gender').value || null,
+                
+                // Eğitim Bilgileri
+                school: document.getElementById('school').value || null,
+                department: document.getElementById('department').value || null,
+                grade: document.getElementById('grade').value || null,
+                
+                // Katılım Bilgileri
+                participation_type: document.getElementById('participation-type').value || null,
+                attendance_day: document.getElementById('attendance-day').value || null,
+                motivation: document.getElementById('motivation').value,
+                previous_event: document.getElementById('previous-event').value || null,
+                previous_project: document.getElementById('previous-project').value || null,
+                project_explanation: document.getElementById('project-explanation').value || null,
+                
+                // Onaylar
+                email_consent: document.getElementById('email-consent').checked,
+                photo_consent: document.getElementById('photo-consent').checked,
+                
+                // Timestamp
+                created_at: new Date().toISOString()
+            };
+
+            try {
+                // Supabase'e veri gönder
+                const { data, error } = await supabase
+                    .from('uaz25_applications') // Tablo adı
+                    .insert([formData]);
+
+                if (error) {
+                    throw error;
+                }
+
+                console.log('Form başarıyla kaydedildi:', data);
+
+                // Başarılı mesajı göster
+                alert('Başvurunuz başarıyla alındı! En kısa sürede sizinle iletişime geçeceğiz.\n\nTeşekkür ederiz! 🚀');
+
+                // Formu sıfırla
+                this.reset();
+                document.getElementById('project-explanation-group').style.display = 'none';
+                
+                // İlk adıma dön
+                showStep(1);
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+
+            } catch (error) {
+                console.error('Hata:', error);
+                alert('Bir hata oluştu. Lütfen tekrar deneyin veya bizimle iletişime geçin.\n\nHata: ' + error.message);
+            } finally {
+                // Submit button'ı tekrar aktif et
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = originalText;
+            }
+        });
+
+        // Initialize stars on page load
+        window.addEventListener('DOMContentLoaded', createStars);
+    </script>
+</body>
+
+</html>
+
