@@ -934,6 +934,7 @@ section {
 
 /* Projects section background blur */
 .projects-bg-blur {
+    display: none;
     position: absolute;
     top: 0;
     left: 0;
@@ -951,6 +952,7 @@ section {
 
 /* Projects section ek blur efekti */
 .projects::after {
+    display: none;
     content: '';
     position: absolute;
     top: 0;
@@ -2398,11 +2400,12 @@ section.leaving {
     z-index: 1;
     pointer-events: none;
     opacity: 0.4;
-    animation: grid-move 20s linear infinite;
+    /* animation: grid-move 20s linear infinite; - Hareket kaldırıldı */
 }
 
 /* Electric energy flow effect */
 .grid-pattern::before {
+    display: none; /* Hareketli çizgiler gizlendi */
     content: '';
     position: absolute;
     top: 0;
@@ -2432,6 +2435,7 @@ section.leaving {
 }
 
 .grid-pattern::after {
+    display: none; /* Hareketli çizgiler gizlendi */
     content: '';
     position: absolute;
     top: 0;
