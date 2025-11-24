@@ -85,14 +85,14 @@
 
                     <div class="form-group">
                         <label for="phone">Telefon numarası <span class="required">*</span></label>
-                        <small class="field-description">Lütfen 05xx ile başlayan cep numaranızı giriniz.</small>
+                       
                         <input type="tel" id="phone" name="phone" placeholder="05XX XXX XX XX" pattern="05[0-9]{9}" required>
                     </div>
 
                     <div class="form-group">
                         <label for="email">E-posta adresi <span class="required">*</span></label>
                         <small class="field-description">Bilgilendirme e-postaları bu adrese gönderilecektir.</small>
-                        <input type="email" id="email" name="email" placeholder="ornek@mail.com" required>
+                        <input type="email" id="email" name="email" placeholder="ornek@gmail.com" required>
                     </div>
 
                     <div class="form-group">
@@ -123,12 +123,63 @@
 
                     <div class="form-group">
                         <label for="school">Okul</label>
-                        <select id="school" name="school">
-                            <option value="" disabled selected>Seçiniz</option>
-                            <option value="yildiz-teknik">Yıldız Teknik Üniversitesi</option>
-                            <option value="istanbul-teknik">İstanbul Teknik Üniversitesi</option>
+                        <select id="school" name="school" required>
+                            <option value="" disabled selected>Seçiniz <span class="required">*</span></option>
+                            <option value="abdullah-gul">Abdullah Gül Üniversitesi</option>
+                            <option value="acibadem">Acıbadem Mehmet Ali Aydınlar Üniversitesi</option>
+                            <option value="akdeniz">Akdeniz Üniversitesi</option>
+                            <option value="anadolu">Anadolu Üniversitesi</option>
+                            <option value="ankara">Ankara Üniversitesi</option>
+                            <option value="ankara-yildirim-beyazit">Ankara Yıldırım Beyazıt Üniversitesi</option>
+                            <option value="ataturk">Atatürk Üniversitesi</option>
+                            <option value="baskent">Başkent Üniversitesi</option>
+                            <option value="bezmialem-vakif">Bezmialem Vakıf Üniversitesi</option>
                             <option value="bogazici">Boğaziçi Üniversitesi</option>
-                            <option value="diger">Diğer</option>
+                            <option value="bolu-abant-izzet-baysal">Bolu Abant İzzet Baysal Üniversitesi</option>
+                            <option value="bursa-uludag">Bursa Uludağ Üniversitesi</option>
+                            <option value="cankaya">Çankaya Üniversitesi</option>
+                            <option value="cukurova">Çukurova Üniversitesi</option>
+                            <option value="dicle">Dicle Üniversitesi</option>
+                            <option value="dokuz-eylul">Dokuz Eylül Üniversitesi</option>
+                            <option value="ege">Ege Üniversitesi</option>
+                            <option value="erciyes">Erciyes Üniversitesi</option>
+                            <option value="eskisehir-osmangazi">Eskişehir Osmangazi Üniversitesi</option>
+                            <option value="firat">Fırat Üniversitesi</option>
+                            <option value="gazi">Gazi Üniversitesi</option>
+                            <option value="gaziantep">Gaziantep Üniversitesi</option>
+                            <option value="gebze-teknik">Gebze Teknik Üniversitesi</option>
+                            <option value="hacettepe">Hacettepe Üniversitesi</option>
+                            <option value="ihsan-dogramaci-bilkent">İhsan Doğramacı Bilkent Üniversitesi</option>
+                            <option value="inonu">İnönü Üniversitesi</option>
+                            <option value="istanbul">İstanbul Üniversitesi</option>
+                            <option value="istanbul-arel">İstanbul Arel Üniversitesi</option>
+                            <option value="istanbul-bilgi">İstanbul Bilgi Üniversitesi</option>
+                            <option value="istanbul-cerrahpasa">İstanbul Üniversitesi Cerrahpaşa</option>
+                            <option value="istanbul-medeniyet">İstanbul Medeniyet Üniversitesi</option>
+                            <option value="istanbul-medipol">İstanbul Medipol Üniversitesi</option>
+                            <option value="istanbul-okan">İstanbul Okan Üniversitesi</option>
+                            <option value="istanbul-teknik">İstanbul Teknik Üniversitesi</option>
+                            <option value="izmir-katip-celebi">İzmir Kâtip Çelebi Üniversitesi</option>
+                            <option value="izmir-yuksek-teknoloji">İzmir Yüksek Teknoloji Ensititüsü</option>
+                            <option value="karadeniz-teknik">Karadeniz Teknik Üniversitesi</option>
+                            <option value="koc">Koç Üniversitesi</option>
+                            <option value="kocaeli">Kocaeli Üniversitesi</option>
+                            <option value="manisa-celal-bayar">Manisa Celal Bayar Üniversitesi</option>
+                            <option value="marmara">Marmara Üniversitesi</option>
+                            <option value="mersin">Mersin Üniversitesi</option>
+                            <option value="necmettin-erbakan">Necmettin Erbakan Üniversitesi</option>
+                            <option value="odtu">Orta Doğu Teknik Üniversitesi</option>
+                            <option value="on-dokuz-mayis">On Dokuz Mayıs Üniversitesi</option>
+                            <option value="pamukkale">Pamukkale Üniversitesi</option>
+                            <option value="sabanci">Sabancı Üniversitesi</option>
+                            <option value="sakarya">Sakarya Üniversitesi</option>
+                            <option value="selcuk">Selçuk Üniversitesi</option>
+                            <option value="suleyman-demirel">Süleyman Demirel Üniversitesi</option>
+                            <option value="tobb">TOBB Ekonomi ve Teknoloji Üniversitesi</option>
+                            <option value="van-yuz-yil">Van Yüz Yıl Üniversitesi</option>
+                            <option value="yeditepe">Yeditepe Üniversitesi</option>
+                            <option value="yildiz-teknik">Yıldız Teknik Üniversitesi</option>
+                            <option value="diger">Diğer Üniversiteler</option>
                         </select>
                     </div>
 
@@ -364,6 +415,7 @@
         // Multi-step form logic
         let currentStep = 1;
         const totalSteps = 4;
+        let completedSteps = []; // Tamamlanmış adımları takip et
 
         // Get all steps
         const formSteps = document.querySelectorAll('.form-step');
@@ -421,6 +473,11 @@
         nextBtns.forEach(btn => {
             btn.addEventListener('click', () => {
                 if (validateStep(currentStep)) {
+                    // Mevcut adımı tamamlanmış olarak işaretle
+                    if (!completedSteps.includes(currentStep)) {
+                        completedSteps.push(currentStep);
+                    }
+                    
                     if (currentStep < totalSteps) {
                         showStep(currentStep + 1);
                         window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -437,6 +494,52 @@
                 if (currentStep > 1) {
                     showStep(currentStep - 1);
                     window.scrollTo({ top: 0, behavior: 'smooth' });
+                }
+            });
+        });
+
+        // Progress steps click handler - Adım numaralarına tıklama
+        progressSteps.forEach((step, index) => {
+            step.style.cursor = 'pointer'; // Fareyi göster
+            
+            step.addEventListener('click', () => {
+                const targetStep = index + 1;
+                
+                // 1. adıma her zaman gidilebilir
+                if (targetStep === 1) {
+                    showStep(targetStep);
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                    return;
+                }
+                
+                // Hedef adım mevcut adımdan küçükse ve önceki adım tamamlanmışsa gidilebilir
+                if (targetStep < currentStep) {
+                    showStep(targetStep);
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                    return;
+                }
+                
+                // İleri gitmek için önceki tüm adımlar tamamlanmış olmalı
+                if (targetStep > currentStep) {
+                    let canProceed = true;
+                    
+                    // Hedef adıma kadar olan tüm adımları kontrol et
+                    for (let i = currentStep; i < targetStep; i++) {
+                        if (!validateStep(i)) {
+                            canProceed = false;
+                            alert(`Lütfen önce ${i}. adımı tamamlayın.`);
+                            break;
+                        }
+                        // Adımı tamamlanmış olarak işaretle
+                        if (!completedSteps.includes(i)) {
+                            completedSteps.push(i);
+                        }
+                    }
+                    
+                    if (canProceed) {
+                        showStep(targetStep);
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                    }
                 }
             });
         });
@@ -556,6 +659,9 @@
                 // Formu sıfırla
                 this.reset();
                 document.getElementById('project-explanation-group').style.display = 'none';
+                
+                // Tamamlanmış adımları sıfırla
+                completedSteps = [];
                 
                 // İlk adıma dön
                 showStep(1);
