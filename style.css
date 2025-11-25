@@ -2699,7 +2699,7 @@ section.leaving {
     margin-bottom: 12px;
     color: #00d4ff;
     text-shadow: 0 0 20px rgba(0, 212, 255, 0.4);
-    letter-spacing: -1px;
+    letter-spacing: 1px;
 }
 
 .form-subtitle {
@@ -2715,7 +2715,7 @@ section.leaving {
 .progress-steps {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
     margin-bottom: 40px;
     position: relative;
 }
@@ -3192,6 +3192,13 @@ section.leaving {
     .section-title i {
         font-size: 1.45rem;
     }
+
+    /* Force simultaneous wrapping for step labels */
+    .step-label {
+        width: min-content;
+        margin-left: auto;
+        margin-right: auto;
+    }
 }
 
 @media (max-width: 768px) {
@@ -3233,6 +3240,10 @@ section.leaving {
     /* Progress Steps Mobile */
     .progress-steps {
         margin-bottom: 30px;
+    }
+
+    .progress-steps::before {
+        top: 17.5px;
     }
 
     .step-label {
@@ -3351,6 +3362,10 @@ section.leaving {
     /* Progress Steps Small Mobile */
     .progress-steps {
         margin-bottom: 25px;
+    }
+
+    .progress-steps::before {
+        top: 15px;
     }
 
     .step-label {
