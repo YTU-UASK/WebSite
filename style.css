@@ -2741,7 +2741,12 @@ section.leaving {
     flex: 1;
     cursor: pointer;
     transition: all 0.3s ease;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
     user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    outline: none;
 }
 
 .step:hover .step-number {
