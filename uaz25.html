@@ -198,9 +198,9 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="department">Bölüm</label>
+                        <label for="department">Bölüm <span class="required">*</span></label>
                         <small class="field-description">Eğer listede yoksa 'Diğer' seçeneğini seçiniz.</small>
-                        <select id="department" name="department">
+                        <select id="department" name="department" required>
                             <option value="" disabled selected>Seçiniz</option>
                             <option value="acil-yardim-afet-yonetimi">Acil Yardım ve Afet Yönetimi</option>
                             <option value="anestezi">Anestezi</option>
@@ -301,8 +301,8 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="grade">Sınıf</label>
-                        <select id="grade" name="grade">
+                        <label for="grade">Sınıf <span class="required">*</span></label>
+                        <select id="grade" name="grade" required>
                             <option value="" disabled selected>Seçiniz</option>
                             <option value="hazirlik">Hazırlık</option>
                             <option value="1">1. sınıf</option>
@@ -336,8 +336,8 @@
                     </h2>
 
                     <div class="form-group">
-                        <label for="participation-type">Katılım türü</label>
-                        <select id="participation-type" name="participation-type">
+                        <label for="participation-type">Katılım türü <span class="required">*</span></label>
+                        <select id="participation-type" name="participation-type" required>
                             <option value="" disabled selected>Seçiniz</option>
                             <option value="ytu-ogrenci">YTÜ öğrencisiyim</option>
                             <option value="diger-universite">Diğer üniversite öğrencisiyim</option>
@@ -347,8 +347,8 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="attendance-day">Hangi günde katılmayı planlıyorsunuz?</label>
-                        <select id="attendance-day" name="attendance-day">
+                        <label for="attendance-day">Hangi günde katılmayı planlıyorsunuz? <span class="required">*</span></label>
+                        <select id="attendance-day" name="attendance-day" required>
                             <option value="" disabled selected>Seçiniz</option>
                             <option value="1-aralik">1 Aralık (Uzay Günü)</option>
                             <option value="2-aralik">2 Aralık (Havacılık Günü)</option>
@@ -431,6 +431,23 @@
                     </div>
                 </div>
             </form>
+
+            <!-- Success Message -->
+            <div class="success-message-container" id="successMessage">
+                <div class="success-icon">🚀</div>
+                <h2 class="success-title">Başvurunuz Alınmıştır!</h2>
+                <p class="success-text">
+                    UAZ'25 Uzay ve Havacılık Zirvesi başvurunuz başarıyla bize ulaştı. Değerlendirme sürecinin ardından sizinle iletişime geçilecektir.
+                </p>
+                <a href="https://www.instagram.com/uask_ytu/" target="_blank" class="success-social-btn">
+                    <i class="fab fa-instagram"></i>
+                    <span>Detaylar için Takip Edin</span>
+                </a>
+                <br>
+                <a href="index.html" class="nav-btn" style="display: inline-flex; text-decoration: none;">
+                    <i class="fas fa-home"></i> Ana Sayfaya Dön
+                </a>
+            </div>
         </div>
     </div>
 
@@ -675,32 +692,31 @@
                 lastname: document.getElementById('lastname').value,
                 phone: document.getElementById('phone').value,
                 email: document.getElementById('email').value,
+                school: document.getElementById('school').value,
+                department: document.getElementById('department').value,
+                grade: document.getElementById('grade').value,
+                participation_type: document.getElementById('participation-type').value,
+                attendance_day: document.getElementById('attendance-day').value,
                 motivation: document.getElementById('motivation').value,
                 emailConsent: document.getElementById('email-consent').checked,
                 photoConsent: document.getElementById('photo-consent').checked
             };
 
             // Validation kontrolü
-            if (!requiredFields.firstname || !requiredFields.lastname) {
-                alert('Lütfen isim ve soyisim alanlarını doldurun.');
+            if (!requiredFields.firstname || !requiredFields.lastname || !requiredFields.phone || !requiredFields.email) {
+                alert('Lütfen Kişisel Bilgiler adımındaki tüm zorunlu alanları doldurun.');
                 showStep(1);
                 return;
             }
 
-            if (!requiredFields.phone || !requiredFields.phone.match(/^05[0-9]{9}$/)) {
-                alert('Lütfen geçerli bir telefon numarası girin (05XX XXX XX XX).');
-                showStep(1);
+            if (!requiredFields.school || !requiredFields.department || !requiredFields.grade) {
+                alert('Lütfen Eğitim Bilgileri adımındaki tüm zorunlu alanları doldurun.');
+                showStep(2);
                 return;
             }
 
-            if (!requiredFields.email || !requiredFields.email.includes('@')) {
-                alert('Lütfen geçerli bir e-posta adresi girin.');
-                showStep(1);
-                return;
-            }
-
-            if (!requiredFields.motivation) {
-                alert('Lütfen katılım nedeninizi yazın.');
+            if (!requiredFields.participation_type || !requiredFields.attendance_day || !requiredFields.motivation) {
+                alert('Lütfen Katılım Bilgileri adımındaki tüm zorunlu alanları doldurun.');
                 showStep(3);
                 return;
             }
@@ -759,8 +775,18 @@
 
                 console.log('Form başarıyla kaydedildi:', data);
 
-                // Başarılı mesajı göster
-                alert('Başvurunuz başarıyla alındı! En kısa sürede sizinle iletişime geçeceğiz.\n\nTeşekkür ederiz! 🚀');
+                // Formu ve başlıkları gizle
+                document.querySelector('.progress-steps').style.display = 'none';
+                document.getElementById('registrationForm').style.display = 'none';
+                document.querySelector('.form-title').style.display = 'none';
+                document.querySelector('.form-subtitle').style.display = 'none';
+
+                // Başarı mesajını göster
+                const successMessage = document.getElementById('successMessage');
+                successMessage.style.display = 'flex';
+                
+                // Sayfanın en üstüne kaydır
+                window.scrollTo({ top: 0, behavior: 'smooth' });
 
                 // Formu sıfırla
                 this.reset();
@@ -768,11 +794,6 @@
                 
                 // Tamamlanmış adımları sıfırla
                 completedSteps = [];
-                
-                // Ana sayfaya yönlendir
-                setTimeout(() => {
-                    window.location.href = 'index.html';
-                }, 500);
 
             } catch (error) {
                 console.error('Hata:', error);
