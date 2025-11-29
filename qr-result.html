@@ -24,15 +24,15 @@
         }
         
         .entry-card {
+            position: relative;
+            z-index: 10;
             max-width: 600px;
-            width: 100%;
+            width: 80%;
             margin: 0 auto;
             text-align: center;
-        }
-        
-        .entry-card-content {
             background: rgba(255, 255, 255, 0.03);
             backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
             border-radius: 30px;
             padding: 60px 40px;
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
@@ -184,6 +184,11 @@
         
         /* Tablet için responsive */
         @media (max-width: 768px) {
+            .entry-card {
+                width: 80%;
+                padding: 40px 30px;
+            }
+            
             .entry-name {
                 font-size: 2rem;
             }
@@ -193,14 +198,15 @@
                 letter-spacing: 6px;
                 padding: 28px 35px;
             }
-            
-            .entry-card-content {
-                padding: 40px 30px;
-            }
         }
         
         /* Mobil için responsive */
         @media (max-width: 480px) {
+            .entry-card {
+                width: 80%;
+                padding: 30px 20px;
+            }
+            
             .entry-logo img {
                 width: 120px;
             }
@@ -214,10 +220,6 @@
                 letter-spacing: 3px;
                 padding: 22px 18px;
                 word-break: break-all;
-            }
-            
-            .entry-card-content {
-                padding: 30px 20px;
             }
             
             .back-button {
@@ -234,10 +236,8 @@
         <div class="hero-stars" id="hero-stars"></div>
 
         <!-- Entry Card -->
-        <div class="form-container entry-card">
-            <div class="entry-card-content" id="entryContent">
-                <!-- JavaScript ile doldurulacak -->
-            </div>
+        <div class="entry-card" id="entryContent">
+            <!-- JavaScript ile doldurulacak -->
         </div>
     </div>
 
