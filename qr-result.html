@@ -11,6 +11,9 @@
     <!-- Main Stylesheet -->
     <link rel="stylesheet" href="style.css">
     
+    <!-- QR Code Library -->
+    <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js"></script>
+    
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="media/logo.png">
     <link rel="shortcut icon" type="image/x-icon" href="media/logo.png">
@@ -119,6 +122,37 @@
             margin-bottom: 30px;
         }
         
+        .qr-code-container {
+            margin: 40px 0;
+        }
+        
+        .qr-code-label {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+        
+        .qr-code-box {
+            background: white;
+            padding: 20px;
+            border-radius: 20px;
+            display: inline-block;
+            border: 3px solid #a55e1f;
+            box-shadow: 0 10px 30px rgba(165, 94, 31, 0.3);
+        }
+        
+        .qr-code-box canvas {
+            display: block;
+            border-radius: 10px;
+        }
+        
+        .qr-code-hint {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.6);
+            margin-top: 15px;
+        }
+        
         .entry-icon {
             font-size: 3rem;
             margin-bottom: 20px;
@@ -180,6 +214,64 @@
         
         .back-button i {
             margin-right: 8px;
+        }
+        
+        /* Tablet için responsive */
+        @media (max-width: 768px) {
+            .entry-name {
+                font-size: 2rem;
+            }
+            
+            .entry-code-display {
+                font-size: 2.2rem;
+                letter-spacing: 4px;
+                padding: 25px 30px;
+            }
+            
+            .qr-code-box canvas {
+                max-width: 250px;
+                width: 100%;
+            }
+            
+            .entry-card-content {
+                padding: 40px 30px;
+            }
+        }
+        
+        /* Mobil için responsive */
+        @media (max-width: 480px) {
+            .entry-logo img {
+                width: 120px;
+            }
+            
+            .entry-name {
+                font-size: 1.5rem;
+            }
+            
+            .entry-code-display {
+                font-size: 1.5rem;
+                letter-spacing: 2px;
+                padding: 20px 15px;
+                word-break: break-all;
+            }
+            
+            .qr-code-box {
+                padding: 15px;
+            }
+            
+            .qr-code-box canvas {
+                max-width: 200px;
+                width: 100%;
+            }
+            
+            .entry-card-content {
+                padding: 30px 20px;
+            }
+            
+            .back-button {
+                padding: 12px 25px;
+                font-size: 0.9rem;
+            }
         }
     </style>
 </head>
@@ -272,9 +364,15 @@
                 
                 <div class="entry-code-display">${code}</div>
                 
+                <div class="qr-code-container">
+                    <div class="qr-code-label">QR Kod</div>
+                    <div class="qr-code-box" id="qrCodeBox"></div>
+                    <div class="qr-code-hint">Bu QR kodu etkinlik girişinde gösterebilirsiniz</div>
+                </div>
+                
                 <div class="entry-message">
                     <i class="fas fa-ticket-alt"></i>
-                    Zirveye giriş için bu kodu kullanabilirsiniz.
+                    Zirveye giriş için bu kodu veya QR kodu kullanabilirsiniz.
                 </div>
                 
                 <a href="index.html" class="back-button">
@@ -282,6 +380,32 @@
                     Ana Sayfaya Dön
                 </a>
             `;
+            
+            // QR kod oluştur
+            const currentUrl = window.location.origin + window.location.pathname;
+            const qrUrl = `${currentUrl}?isim=${encodeURIComponent(isim)}&code=${code}`;
+            
+            // QR Code oluştur
+            const canvas = document.createElement('canvas');
+            const qrCodeBox = document.getElementById('qrCodeBox');
+            
+            if (typeof QRCode !== 'undefined' && QRCode.toCanvas) {
+                QRCode.toCanvas(canvas, qrUrl, {
+                    width: 300,
+                    margin: 2,
+                    color: {
+                        dark: '#a55e1f',
+                        light: '#ffffff'
+                    }
+                }).then(() => {
+                    qrCodeBox.appendChild(canvas);
+                }).catch(err => {
+                    console.error('QR kod oluşturma hatası:', err);
+                    qrCodeBox.innerHTML = '<p style="color: #ff6b6b;">QR kod oluşturulamadı</p>';
+                });
+            } else {
+                qrCodeBox.innerHTML = '<p style="color: #ff6b6b;">QR kod kütüphanesi yüklenemedi</p>';
+            }
             
             console.log('Giriş Bilgileri:', { isim, code });
         }
