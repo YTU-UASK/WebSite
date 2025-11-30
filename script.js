@@ -988,3 +988,238 @@ window.addEventListener('load', () => {
         { opacity: 1, duration: 1, ease: "power2.out" }
     );
 });
+
+// Easter Egg: GTA San Andreas Cheat Codes
+(function() {
+    let konamiCode = '';
+    const cheatCodes = {
+        'hesoyam': 'HESOYAM ACTIVATED!',
+        'aezakmı': 'AEZAKMİ ACTIVATED!',
+        'rocketman': 'ROCKETMAN ACTIVATED!',
+        'rıpazha': 'RIPAZHA ACTIVATED!',
+        'ohdude':'OHDUDE ACTIVATED!'
+    };
+    let audio = null;
+    
+    // Audio dosyasını önceden yükle
+    function initAudio() {
+        audio = new Audio('media/gta.mp3');
+        audio.volume = 0.7; // Ses seviyesi
+        audio.loop = false; // Tekrar çalmasın, bir kere çalıp dursun
+    }
+    
+    // Custom modal oluştur
+    function showEasterEggModal(activatedCode) {
+        // Modal container oluştur
+        const modal = document.createElement('div');
+        modal.id = 'easter-egg-modal';
+        modal.style.cssText = `
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 10000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            overflow-y: auto;
+            animation: fadeIn 0.3s ease;
+        `;
+        
+        // Modal içeriği - daha kompakt ve responsive
+        modal.innerHTML = `
+            <div style="
+                background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+                border-radius: 15px;
+                padding: 30px 25px;
+                max-width: 450px;
+                width: 100%;
+                max-height: 90vh;
+                overflow-y: auto;
+                text-align: center;
+                box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
+                border: 2px solid #ff8c42;
+                animation: slideUp 0.4s ease;
+                position: relative;
+            ">
+                <h2 style="
+                    color: #ff8c42;
+                    font-size: 1.5rem;
+                    margin-bottom: 15px;
+                    text-shadow: 0 0 15px rgba(255, 140, 66, 0.5);
+                    line-height: 1.3;
+                ">🎮 Çok Gizli Bir Easter Egg Keşfettin! 🎮</h2>
+                
+                <img src="media/gta.jpg" alt="GTA Character" style="
+                    width: 100%;
+                    max-width: 250px;
+                    border-radius: 12px;
+                    margin: 15px auto;
+                    display: block;
+                    border: 3px solid #ff8c42;
+                    box-shadow: 0 8px 25px rgba(255, 140, 66, 0.4);
+                ">
+                
+                <p style="
+                    color: #fff;
+                    font-size: 1rem;
+                    margin: 15px 0;
+                    line-height: 1.5;
+                ">🚀 <strong>${activatedCode}</strong> 🚀<br><br>UASK'a hoş geldiniz!<br>Uzay ve Havacılık sistemlerinde sınırsız enerji! 💫</p>
+                
+                <button onclick="this.closest('#easter-egg-modal').remove()" style="
+                    background: linear-gradient(135deg, #ff8c42 0%, #ffb347 100%);
+                    color: white;
+                    border: none;
+                    padding: 12px 35px;
+                    font-size: 1rem;
+                    border-radius: 25px;
+                    cursor: pointer;
+                    font-weight: bold;
+                    margin-top: 15px;
+                    transition: all 0.2s;
+                    box-shadow: 0 5px 15px rgba(255, 140, 66, 0.4);
+                " onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 8px 20px rgba(255, 140, 66, 0.6)'" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 5px 15px rgba(255, 140, 66, 0.4)'">
+                    Kapat
+                </button>
+            </div>
+        `;
+        
+        // CSS animasyonları ekle
+        if (!document.getElementById('easter-egg-styles')) {
+            const style = document.createElement('style');
+            style.id = 'easter-egg-styles';
+            style.textContent = `
+                @keyframes fadeIn {
+                    from { opacity: 0; }
+                    to { opacity: 1; }
+                }
+                @keyframes slideUp {
+                    from { 
+                        opacity: 0;
+                        transform: translateY(30px) scale(0.95);
+                    }
+                    to { 
+                        opacity: 1;
+                        transform: translateY(0) scale(1);
+                    }
+                }
+                #easter-egg-modal::-webkit-scrollbar {
+                    width: 6px;
+                }
+                #easter-egg-modal::-webkit-scrollbar-track {
+                    background: rgba(255, 255, 255, 0.1);
+                    border-radius: 10px;
+                }
+                #easter-egg-modal::-webkit-scrollbar-thumb {
+                    background: #ff8c42;
+                    border-radius: 10px;
+                }
+            `;
+            document.head.appendChild(style);
+        }
+        
+        // Modal'ı kapatma fonksiyonu
+        function closeModal() {
+            modal.remove();
+            // Müziği durdur
+            if (audio) {
+                audio.pause();
+                audio.currentTime = 0;
+            }
+        }
+        
+        // Modal'ı sayfaya ekle
+        document.body.appendChild(modal);
+        
+        // Modal dışına tıklanınca kapat
+        modal.addEventListener('click', function(e) {
+            if (e.target === modal) {
+                closeModal();
+            }
+        });
+        
+        // Kapat butonuna tıklanınca
+        const closeBtn = modal.querySelector('button');
+        if (closeBtn) {
+            closeBtn.onclick = function() {
+                closeModal();
+            };
+        }
+        
+        // ESC tuşu ile kapat
+        const closeOnEsc = function(e) {
+            if (e.key === 'Escape') {
+                closeModal();
+                document.removeEventListener('keydown', closeOnEsc);
+            }
+        };
+        document.addEventListener('keydown', closeOnEsc);
+    }
+    
+    // Sayfa yüklendiğinde audio'yu hazırla
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initAudio);
+    } else {
+        initAudio();
+    }
+    
+    document.addEventListener('keydown', function(e) {
+        // Klavye tuşunu al
+        let key = e.key;
+        
+        // Türkçe karakter desteği - özel karakterleri düzelt
+        const turkishMap = {
+            'I': 'ı',
+            'İ': 'i',
+            'Ğ': 'ğ',
+            'Ü': 'ü',
+            'Ş': 'ş',
+            'Ö': 'ö',
+            'Ç': 'ç'
+        };
+        
+        // Eğer Türkçe karakter varsa dönüştür
+        if (turkishMap[key]) {
+            key = turkishMap[key];
+        } else {
+            key = key.toLowerCase();
+        }
+        
+        // Eğer harf karakteriyse ekle
+        if (key.length === 1 && /[a-zığüşöç]/.test(key)) {
+            konamiCode += key;
+            
+            // En uzun cheat code 8 karakter (rocketman), buffer'ı ona göre ayarla
+            const maxLength = 8;
+            if (konamiCode.length > maxLength) {
+                konamiCode = konamiCode.slice(-maxLength);
+            }
+            
+            // Tüm cheat code'ları kontrol et
+            for (const [code, message] of Object.entries(cheatCodes)) {
+                if (konamiCode.endsWith(code)) {
+                    // Önce müziği hemen çal
+                    if (audio) {
+                        // Eğer müzik çalıyorsa durdur
+                        audio.pause();
+                        audio.currentTime = 0; // Baştan başlat
+                        // Müziği hemen başlat (her easter egg için bir kere çalıp dursun)
+                        audio.play().catch(err => {
+                            console.log('Müzik çalınamadı:', err);
+                        });
+                    }
+                    
+                    // Modalı hemen göster (müzik başlamayı beklemeden)
+                    showEasterEggModal(message);
+                    
+                    konamiCode = ''; // Reset
+                    break; // Eşleşme bulundu, döngüden çık
+                }
+            }
+        }
+    });
+})();
