@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="tr" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UASK - Uzay ve Aviyonik Sistemler Kulübü</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="icon" type="image/x-icon" href="media/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Interactive Particle Canvas -->
+    <canvas id="particles"></canvas>
+
+    <!-- Scroll Progress -->
+    <div class="scroll-progress" id="scrollProgress"></div>
+
+    <!-- Theme Toggle -->
+    <button class="theme-toggle" id="themeToggle" aria-label="Tema Degistir">
+        <i class="fas fa-moon"></i>
+        <i class="fas fa-sun"></i>
+    </button>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#home" class="nav-brand">
+                <img src="media/logo.png" alt="UASK" class="nav-logo">
+            </a>
+            <div class="nav-links" id="navLinks">
+                <a href="#home" class="nav-link active" data-section="home">Ana Sayfa</a>
+                <a href="#about" class="nav-link" data-section="about">Hakkımızda</a>
+                <a href="#stats" class="nav-link" data-section="stats">Başarılar</a>
+                <a href="#projects" class="nav-link" data-section="projects">Projeler</a>
+                <a href="#timeline" class="nav-link" data-section="timeline">Yolculuk</a>
+                <a href="#team" class="nav-link" data-section="team">Ekip</a>
+                <a href="#faq" class="nav-link" data-section="faq">SSS</a>
+                <a href="#contact" class="nav-link" data-section="contact">İletişim</a>
+            </div>
+            <div class="nav-actions">
+                <button class="nav-hamburger" id="navHamburger" aria-label="Menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu-content">
+            <a href="#home" class="mobile-link" data-section="home">Ana Sayfa</a>
+            <a href="#about" class="mobile-link" data-section="about">Hakkımızda</a>
+            <a href="#stats" class="mobile-link" data-section="stats">Başarılar</a>
+            <a href="#projects" class="mobile-link" data-section="projects">Projeler</a>
+            <a href="#timeline" class="mobile-link" data-section="timeline">Yolculuk</a>
+            <a href="#team" class="mobile-link" data-section="team">Ekip</a>
+            <a href="#faq" class="mobile-link" data-section="faq">SSS</a>
+            <a href="#contact" class="mobile-link" data-section="contact">İletişim</a>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content" id="heroContent"></div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section about">
+        <div class="container">
+            <div class="section-header reveal" id="aboutHeader"></div>
+            <div class="about-grid" id="aboutGrid"></div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section id="stats" class="section stats">
+        <div class="container">
+            <div class="section-header reveal" id="statsHeader"></div>
+            <div class="stats-grid" id="statsGrid"></div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section projects">
+        <div class="container">
+            <div class="section-header reveal" id="projectsHeader"></div>
+            <div class="projects-grid" id="projectsGrid"></div>
+        </div>
+    </section>
+
+    <!-- Timeline Section -->
+    <section id="timeline" class="section timeline-section">
+        <div class="container">
+            <div class="section-header reveal" id="timelineHeader"></div>
+            <div class="timeline" id="timelineContainer"></div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section id="team" class="section team-section">
+        <div class="container">
+            <div class="section-header reveal" id="teamHeader"></div>
+            <div class="team-filter reveal" id="teamFilter"></div>
+            <div class="team-search reveal">
+                <i class="fas fa-search"></i>
+                <input type="text" id="teamSearch" placeholder="İsim veya bölüm ara...">
+            </div>
+            <div class="team-grid" id="teamGrid"></div>
+            <p class="no-results" id="noResults" style="display:none;">Aramanızla eşleşen üye bulunamadı.</p>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="section faq-section">
+        <div class="container">
+            <div class="section-header reveal" id="faqHeader"></div>
+            <div class="faq-grid" id="faqGrid"></div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section contact-section">
+        <div class="container">
+            <div class="section-header reveal" id="contactHeader"></div>
+            <div class="contact-grid" id="contactGrid"></div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content" id="footerContent"></div>
+            <div class="footer-bottom" id="footerBottom"></div>
+        </div>
+    </footer>
+
+    <!-- Back to Top -->
+    <button class="back-to-top" id="backToTop" aria-label="Yukarı git">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <script src="data.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>

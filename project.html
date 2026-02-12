@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="tr" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UASK - Proje Detay</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="project.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="icon" type="image/x-icon" href="media/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Particle Canvas -->
+    <canvas id="particles"></canvas>
+
+    <!-- Reading Progress Bar -->
+    <div class="reading-progress" id="readingProgress"></div>
+
+    <!-- Theme Toggle -->
+    <button class="theme-toggle" id="themeToggle" aria-label="Tema Degistir">
+        <i class="fas fa-moon"></i>
+        <i class="fas fa-sun"></i>
+    </button>
+
+    <!-- Keyboard Shortcuts Tooltip -->
+    <div class="kbd-tooltip" id="kbdTooltip">
+        <div class="kbd-row"><kbd>&larr;</kbd><kbd>&rarr;</kbd> <span>Projeler arası gezin</span></div>
+        <div class="kbd-row"><kbd>Esc</kbd> <span>Ana sayfaya dön</span></div>
+        <div class="kbd-row"><kbd>C</kbd> <span>Karşılaştırma paneli</span></div>
+        <div class="kbd-row"><kbd>G</kbd> <span>Galeriye git</span></div>
+    </div>
+    <button class="kbd-hint" id="kbdHint" aria-label="Klavye kısayolları">
+        <i class="fas fa-keyboard"></i>
+    </button>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-brand">
+                <img src="media/logo.png" alt="UASK" class="nav-logo">
+            </a>
+            <div class="nav-actions">
+                <a href="index.html#projects" class="nav-cta">
+                    <i class="fas fa-arrow-left"></i>
+                    <span>Tüm Projeler</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Project Hero -->
+    <section class="project-hero" id="projectHero">
+        <div class="project-hero-bg" id="projectHeroBg"></div>
+        <div class="project-hero-overlay"></div>
+        <div class="project-hero-content">
+            <div class="project-breadcrumb">
+                <a href="index.html">Ana Sayfa</a>
+                <i class="fas fa-chevron-right"></i>
+                <a href="index.html#projects">Projeler</a>
+                <i class="fas fa-chevron-right"></i>
+                <span id="breadcrumbName">-</span>
+            </div>
+            <h1 class="project-hero-title" id="projectTitle">-</h1>
+            <p class="project-hero-desc" id="projectTagline">-</p>
+            <div class="project-hero-tags" id="projectTags"></div>
+            <div class="project-hero-meta" id="projectMeta"></div>
+        </div>
+        <!-- Project Nav Arrows -->
+        <button class="project-nav-arrow prev" id="prevProject" aria-label="Önceki proje">
+            <i class="fas fa-chevron-left"></i>
+        </button>
+        <button class="project-nav-arrow next" id="nextProject" aria-label="Sonraki proje">
+            <i class="fas fa-chevron-right"></i>
+        </button>
+    </section>
+
+    <!-- Project Content -->
+    <main class="project-main">
+        <div class="container">
+
+            <!-- Description Section -->
+            <section class="project-section reveal" id="descriptionSection">
+                <div class="section-header">
+                    <span class="section-tag">Hakkında</span>
+                    <h2 class="section-title">Proje Detayları</h2>
+                    <div class="section-line"></div>
+                </div>
+                <div class="project-description-grid">
+                    <div class="project-description-text" id="projectDescription"></div>
+                    <div class="project-specs glass-card" id="projectSpecs"></div>
+                </div>
+            </section>
+
+            <!-- 3D Model Viewer Section -->
+            <section class="project-section reveal" id="modelSection">
+                <div class="section-header">
+                    <span class="section-tag">3D Görünüm</span>
+                    <h2 class="section-title">Tasarım Modeli</h2>
+                    <div class="section-line"></div>
+                </div>
+                <div class="model-viewer-wrapper">
+                    <div class="model-viewer glass-card" id="modelViewer">
+                        <div class="model-scene" id="modelScene">
+                            <div class="model-object" id="modelObject"></div>
+                        </div>
+                        <div class="model-controls">
+                            <button class="model-ctrl active" data-action="rotate" title="Otomatik Döndür"><i class="fas fa-sync-alt"></i></button>
+                            <button class="model-ctrl" data-action="wireframe" title="Tel Kafes"><i class="fas fa-border-all"></i></button>
+                            <button class="model-ctrl" data-action="explode" title="Parçalı Görünüm"><i class="fas fa-expand-arrows-alt"></i></button>
+                            <button class="model-ctrl" data-action="reset" title="Sıfırla"><i class="fas fa-undo"></i></button>
+                        </div>
+                        <p class="model-hint"><i class="fas fa-hand-pointer"></i> Sürükleyerek döndür, kaydırarak yakınlaştır</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Photo Gallery Section -->
+            <section class="project-section reveal" id="gallerySection">
+                <div class="section-header">
+                    <span class="section-tag">Galeri</span>
+                    <h2 class="section-title">Proje Fotoğrafları</h2>
+                    <div class="section-line"></div>
+                </div>
+                <div class="gallery-grid" id="galleryGrid"></div>
+            </section>
+
+            <!-- Team Section -->
+            <section class="project-section reveal" id="teamSection">
+                <div class="section-header">
+                    <span class="section-tag">Ekip</span>
+                    <h2 class="section-title">Proje Ekibi</h2>
+                    <div class="section-line"></div>
+                </div>
+                <div class="project-team-grid" id="projectTeam"></div>
+            </section>
+
+            <!-- Other Projects -->
+            <section class="project-section reveal">
+                <div class="section-header">
+                    <span class="section-tag">Diğer</span>
+                    <h2 class="section-title">Diğer Projeler</h2>
+                    <div class="section-line"></div>
+                </div>
+                <div class="other-projects" id="otherProjects"></div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox">
+        <button class="lightbox-close" id="lightboxClose"><i class="fas fa-times"></i></button>
+        <button class="lightbox-prev" id="lightboxPrev"><i class="fas fa-chevron-left"></i></button>
+        <button class="lightbox-next" id="lightboxNext"><i class="fas fa-chevron-right"></i></button>
+        <div class="lightbox-content">
+            <img id="lightboxImg" src="" alt="">
+            <p class="lightbox-caption" id="lightboxCaption"></p>
+        </div>
+        <div class="lightbox-counter" id="lightboxCounter"></div>
+    </div>
+
+    <!-- Comparison Drawer -->
+    <div class="comparison-drawer" id="comparisonDrawer">
+        <div class="comparison-header">
+            <h3><i class="fas fa-columns"></i> Proje Karşılaştırma</h3>
+            <button class="comparison-close" id="comparisonClose"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="comparison-body" id="comparisonBody"></div>
+    </div>
+    <div class="comparison-overlay" id="comparisonOverlay"></div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <img src="media/logo.png" alt="UASK" class="footer-logo">
+                    <p>Uzay ve Aviyonik Sistemler Kulübü</p>
+                    <span>Yıldız Teknik Üniversitesi</span>
+                </div>
+                <div class="footer-links">
+                    <a href="index.html">Ana Sayfa</a>
+                    <a href="index.html#about">Hakkımızda</a>
+                    <a href="index.html#projects">Projeler</a>
+                    <a href="index.html#team">Ekip</a>
+                    <a href="index.html#contact">İletişim</a>
+                </div>
+                <div class="footer-socials">
+                    <a href="https://www.instagram.com/ytuuask/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.linkedin.com/company/ytü-uzay-ve-aviyonik-sistemler-kulübü/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 UASK - Tüm hakları saklıdır.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top -->
+    <button class="back-to-top" id="backToTop" aria-label="Yukarı git">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <script src="data.js"></script>
+    <script src="project.js"></script>
+</body>
+
+</html>
