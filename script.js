@@ -45,7 +45,7 @@
                 </h1>
                 <p class="hero-description">${hero.description}</p>
                 <div class="hero-buttons">
-                    <a href="${hero.buttonLink}" class="btn btn-primary">
+                    <a href="${hero.buttonLink}" class="btn btn-outline-glass shine-hover">
                         <span>${hero.buttonText}</span>
                         <i class="fas fa-chevron-down"></i>
                     </a>
@@ -291,7 +291,7 @@
             `;
 
             const socialsHtml = contact.socials.map(s => `
-                <a href="${s.url}" target="_blank" class="social-card glass-card">
+                <a href="${s.url}" target="_blank" class="social-card glass-card shine-hover">
                     <div class="social-card-icon ${s.colorClass}">
                         <i class="${s.icon}"></i>
                     </div>
@@ -305,14 +305,14 @@
 
             grid.innerHTML = `
                 <div class="contact-info-cards reveal">
-                    <div class="contact-card glass-card">
+                    <div class="contact-card glass-card shine-hover">
                         <div class="contact-card-icon">
                             <i class="fas fa-map-marker-alt"></i>
                         </div>
                         <h4>Adres</h4>
                         <p>${contact.address}</p>
                     </div>
-                    <div class="contact-card glass-card">
+                    <div class="contact-card glass-card shine-hover">
                         <div class="contact-card-icon">
                             <i class="fas fa-envelope"></i>
                         </div>
