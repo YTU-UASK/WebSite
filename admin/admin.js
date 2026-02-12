@@ -319,7 +319,7 @@
                         İlk kurulumda veritabanını varsayılan içerikle doldurmak için aşağıdaki butona tıklayın.
                         Bu işlem mevcut verilerinizin üzerine yazar.
                     </p>
-                    <button class="btn btn-sm btn-save" onclick="AdminApp.seedDatabase()"><i class="fas fa-database"></i> Veritabanını Varsayılanlarla Doldur</button>
+                    <button class="btn btn-sm btn-danger" onclick="AdminApp.seedDatabase()"><i class="fas fa-exclamation-triangle"></i> Veritabanını Varsayılanlarla Doldur</button>
                 </div>
             `;
         }
@@ -1414,7 +1414,8 @@
 
         // --- SEED DATABASE ---
         async seedDatabase() {
-            if (!confirm('Veritabanını varsayılan verilerle doldurmak istediğinize emin misiniz? Mevcut veriler üzerine yazılacak.')) return;
+            if (!confirm('DİKKAT: Veritabanını varsayılan verilerle doldurmak istediğinize emin misiniz? Mevcut TÜM veriler üzerine yazılacak!')) return;
+            if (!confirm('Bu işlem geri alınamaz! Gerçekten devam etmek istiyor musunuz?')) return;
             try {
                 const res = await fetch('/api/admin/seed', {
                     method: 'POST',

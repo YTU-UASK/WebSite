@@ -419,6 +419,21 @@
     box-shadow: 0 4px 16px var(--accent-glow);
 }
 
+.btn-danger {
+    background: linear-gradient(135deg, #dc2626, #b91c1c);
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn-danger:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba(220, 38, 38, 0.4);
+    background: linear-gradient(135deg, #ef4444, #dc2626);
+}
+
 /* === CRUD List === */
 .crud-list {
     display: flex;

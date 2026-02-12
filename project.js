@@ -50,7 +50,7 @@
             this.renderHero();
             this.renderDescription();
             this.renderSpecs();
-            this.render3DModel();
+            // this.render3DModel(); // temporarily disabled
             this.renderGallery();
             this.renderTeam();
             this.renderOtherProjects();
@@ -608,7 +608,7 @@
         ThemeManager.init();
         ParticleSystem.init();
         PageRenderer.init();
-        ModelViewer.init();
+        // ModelViewer.init(); // temporarily disabled
         Gallery.init();
         KeyboardNav.init();
         Comparison.init();
